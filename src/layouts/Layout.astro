@@ -1,0 +1,95 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { SEO, type Props as SEOProps } from "astro-seo";
+import { AstroFont } from "astro-font";
+
+import Navbar from "@/components/sections/Navbar.astro";
+import Footer from "@/components/sections/Footer.astro";
+
+import "@/styles/global.css";
+
+interface Props {
+  seo?: SEOProps
+}
+
+const { seo } = Astro.props;
+
+const title = 'Staptis – AI-Powered Medical Report Automation with SNOMED CT Integration';
+const description = 'Staptis transforms doctor-patient conversations into structured medical reports using AI transcription and SNOMED CT coding. Ensure faster documentation, compliance, and higher accuracy – all in one streamlined tool.';
+const url = 'https://staptis.com'; // update with your actual domain
+const ogImage = '/og-image.png';
+
+---
+<!doctype html>
+<html lang="en" >
+	<head>
+		<SEO
+      charset="utf-8"
+      title={seo?.title ?? title}
+      description={seo?.description ?? description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: ogImage,
+        },
+        optional: {
+          description
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title,
+        description,
+        image: ogImage,
+        imageAlt: "Staptis Logo.",
+      }}
+      extend={{
+        link: [
+          { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+          { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+          { rel: "manifest", href: "/manifest.webmanifest" },
+          { rel: "sitemap", href: "/sitemap-index.xml" },
+        ],
+        meta: [
+          { name: "viewport", content: "width=device-width" },
+          { name: "generator", content: `${Astro.generator}` },
+        ],
+      }}
+    />
+
+		<ClientRouter />
+
+		<AstroFont
+			config={[
+				{
+					src: [],
+					name: "DM Sans",
+					googleFontsURL: "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap",
+					preload: true,
+					display: "swap",
+					selector: "h1, h2, h3, h4",
+					fallback: "sans-serif",
+				},
+				{
+					src: [],
+					name: "Work Sans",
+					googleFontsURL: "https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap",
+					preload: true,
+					display: "swap",
+					selector: "body",
+					fallback: "sans-serif",
+				},
+			]}
+		/>
+	</head>
+	<body class="bg-gray-50">
+		<Navbar />
+
+    <main class="pt-40 px-6">
+      <slot />
+    </main>
+
+    <Footer />
+	</body>
+</html>
