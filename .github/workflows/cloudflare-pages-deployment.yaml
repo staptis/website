@@ -65,7 +65,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler pages deploy ./dist --project-name=$CLOUDFLARE_PROJECT_NAME --branch=$BRANCH --commit-hash=${{ github.sha }} --commit-message "${{ github.event.head_commit.message }}
+        run: npx wrangler pages deploy ./dist --project-name=$CLOUDFLARE_PROJECT_NAME --branch=$BRANCH --commit-hash=${{ github.sha }} --commit-message ${{ github.event.head_commit.message }}
       - name: Create GitHub Deployment
         if: ${{ always() }}
         uses: bobheadxi/deployments@v1
