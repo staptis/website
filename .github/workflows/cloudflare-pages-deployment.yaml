@@ -25,29 +25,27 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup environment
+        env:
+          BRANCH: ${{ github.ref_name }}
+          PR_NUMBER: "${{ github.event.pull_request.number }}"
         run: |
-          REF="${{ github.ref_name }}"
-          PR_NUMBER="${{ github.event.pull_request.number }}"
-
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
           if [[ "$REF" == "main" ]]; then
             echo "DEPLOY_ENV=production" >> $GITHUB_ENV
-            echo "BRANCH=main" >> $GITHUB_ENV
             echo "DEPLOY_URL=https://staptis.com" >> $GITHUB_ENV
 
           elif [[ "$REF" == "staging" ]]; then
             echo "DEPLOY_ENV=staging" >> $GITHUB_ENV
-            echo "BRANCH=staging" >> $GITHUB_ENV
             echo "DEPLOY_URL=https://${BRANCH}.${CLOUDFLARE_PROJECT_NAME}.pages.dev" >> $GITHUB_ENV
 
           elif [[ "$REF" == "development" ]]; then
             echo "DEPLOY_ENV=development" >> $GITHUB_ENV
-            echo "BRANCH=development" >> $GITHUB_ENV
             echo "DEPLOY_URL=https://${BRANCH}.${CLOUDFLARE_PROJECT_NAME}.pages.dev" >> $GITHUB_ENV
 
           elif [[ -n "$PR_NUMBER" ]]; then
             echo "DEPLOY_ENV=preview" >> $GITHUB_ENV
             echo "BRANCH=preview-${PR_NUMBER}" >> $GITHUB_ENV
-            echo "DEPLOY_URL=https://${BRANCH}.${CLOUDFLARE_PROJECT_NAME}.pages.dev" >> $GITHUB_ENV
+            echo "DEPLOY_URL=https://preview-${PR_NUMBER}.${CLOUDFLARE_PROJECT_NAME}.pages.dev" >> $GITHUB_ENV
           fi
       - name: start github deployment
         uses: bobheadxi/deployments@v1
