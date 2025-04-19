@@ -48,6 +48,7 @@ jobs:
             echo "DEPLOY_ENV=preview" >> $GITHUB_ENV
             echo "BRANCH=preview-${PR_NUMBER}" >> $GITHUB_ENV
             echo "DEPLOY_URL=https://preview-${PR_NUMBER}.staptis.com" >> $GITHUB_ENV
+          fi
       - name: start github deployment
         uses: bobheadxi/deployments@v1
         id: deployment
