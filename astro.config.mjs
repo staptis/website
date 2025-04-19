@@ -5,8 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://staptis.com",
-
+  site: process.env.ASTRO_SITE,
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
