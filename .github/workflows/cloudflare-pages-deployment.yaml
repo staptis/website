@@ -30,15 +30,15 @@ jobs:
           PR_NUMBER: "${{ github.event.pull_request.number }}"
         run: |
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
-          if [[ "$REF" == "main" ]]; then
+          if [[ "$BRANCH" == "main" ]]; then
             echo "DEPLOY_ENV=production" >> $GITHUB_ENV
             echo "DEPLOY_URL=https://staptis.com" >> $GITHUB_ENV
 
-          elif [[ "$REF" == "staging" ]]; then
+          elif [[ "$BRANCH" == "staging" ]]; then
             echo "DEPLOY_ENV=staging" >> $GITHUB_ENV
             echo "DEPLOY_URL=https://${BRANCH}.${CLOUDFLARE_PROJECT_NAME}.pages.dev" >> $GITHUB_ENV
 
-          elif [[ "$REF" == "development" ]]; then
+          elif [[ "$BRANCH" == "development" ]]; then
             echo "DEPLOY_ENV=development" >> $GITHUB_ENV
             echo "DEPLOY_URL=https://${BRANCH}.${CLOUDFLARE_PROJECT_NAME}.pages.dev" >> $GITHUB_ENV
 
