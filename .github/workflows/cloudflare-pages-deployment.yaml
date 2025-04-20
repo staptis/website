@@ -56,18 +56,32 @@ jobs:
           env: ${{ env.DEPLOY_ENV }}
           env_url: ${{ env.DEPLOY_URL }}
           deployment_id: ${{ github.event.deployment.id }}
-      - name: Set up Node.js
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run build
+          cache: "pnpm"
+      - run: pnpm install
+      - name: Cache build artifacts (dist folder)
+        uses: actions/cache@v3
+        id: build_cache
+        with:
+          path: dist
+          key: ${{ runner.os }}-dist-${{ hashFiles('**/src/**/*') }}
+          restore-keys: ${{ runner.os }}-dist-website
+      - if: steps.build_cache.outputs.cache-hit != 'true'
+        run: pnpm run build
       - name: Deploy to Cloudflare Pages
         env:
           COMMIT_HASH: ${{ github.sha }}
           COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
-          npx wrangler pages deploy ./dist \
+          pnpm dlx wrangler pages deploy ./dist \
             --project-name="$CLOUDFLARE_PROJECT_NAME" \
             --branch="$BRANCH" \
             --commit-hash="$COMMIT_HASH" \
