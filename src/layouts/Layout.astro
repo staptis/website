@@ -5,6 +5,7 @@ import { AstroFont } from "astro-font";
 
 import Navbar from "@/components/sections/Navbar.astro";
 import Footer from "@/components/sections/Footer.astro";
+import { env } from "@/env";
 
 import "@/styles/global.css";
 
@@ -16,8 +17,8 @@ const { seo } = Astro.props;
 
 const title = 'Staptis – AI-Powered Medical Report Automation with SNOMED CT Integration';
 const description = 'Staptis transforms doctor-patient conversations into structured medical reports using AI transcription and SNOMED CT coding. Ensure faster documentation, compliance, and higher accuracy – all in one streamlined tool.';
-const url = 'https://staptis.com'; // update with your actual domain
-const ogImage = '/og-image.png';
+const url = env.PUBLIC_URL; 
+const ogImage = '/logo.png';
 
 ---
 <!doctype html>

@@ -65,6 +65,8 @@ jobs:
           key: build-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('pnpm-lock.yaml', 'src/**/*', 'public/**/*', 'astro.config.mjs') }}
           restore-keys: ${{ runner.os }}-dist-website
       - if: steps.build_cache.outputs.cache-hit != 'true'
+        env:
+          PUBLIC_URL: ${{ env.DEPLOY_URL }}
         run: pnpm run build
       - name: start github deployment
         if: steps.build_cache.outputs.cache-hit != 'true'
