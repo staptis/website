@@ -1,5 +1,6 @@
 ---
-import Link from "@/components/ui/Link.astro";
+import NavLink from "@/components/ui/NavLink.astro";
+const logo = "/logo_with_name.png";
 ---
 <header
   id="header"
@@ -10,15 +11,14 @@ import Link from "@/components/ui/Link.astro";
   <div class="flex justify-between items-center">
     <!-- Logo -->
     <a href="/" class="flex items-center space-x-3" aria-label="Homepage">
-      <img src="/logo.png" alt="Staptis logo" class="h-8 w-8" />
-      <span class="text-xl font-bold">Staptis</span>
+      <img src=`${logo}` alt="Staptis logo" class="h-8 w-auto" />
     </a>
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex space-x-6 text-gray-700 font-medium" aria-label="Main navigation">
-      <Link href="/" label="Home" />
-      <Link href="/about" label="About" />
-      <Link href="/contact" label="Contact" />
+      <NavLink href="/" label="Home" />
+      <NavLink href="/about" label="About" />
+      <NavLink href="/contact" label="Contact" />
     </nav>
 
     <!-- Hamburger Menu -->
@@ -42,9 +42,9 @@ import Link from "@/components/ui/Link.astro";
     class="md:hidden mt-4 hidden flex flex-col space-y-2"
     aria-label="Mobile navigation"
   >
-    <Link href="/" label="Home" />
-    <Link href="/about" label="About" />
-    <Link href="/contact" label="Contact" />
+    <NavLink href="/" label="Home" />
+    <NavLink href="/about" label="About" />
+    <NavLink href="/contact" label="Contact" />
   </nav>
 
   <!-- Plain inline script (runs on client) -->
