@@ -1,0 +1,57 @@
+---
+import { cn } from "@/utils/cn";
+import {
+  resolveRelativePath,
+  addLanguagePrefix,
+  getLangFromPath,
+} from "@/utils/i18n";
+import { cva } from "class-variance-authority";
+
+interface Props {
+  href: string;
+  label: string;
+  variant?: "simple" | "primary";
+  className?: string;
+}
+
+const { href, label } = Astro.props;
+const currentPath = resolveRelativePath(Astro.url.pathname);
+const isActive = currentPath === href;
+const variant = Astro.props.variant || "primary";
+const lang = getLangFromPath(Astro.url.pathname);
+
+const link = cva(["hover:underline", Astro.props.className], {
+  variants: {
+    variant: {
+      simple: ["text-white"],
+      primary: [
+        "hover:underline-primary hover:text-primary text-gray-700 underline-offset-4",
+      ],
+    },
+    isActive: {
+      true: [""],
+    },
+  },
+  compoundVariants: [
+    {
+      variant: "primary",
+      isActive: true,
+      class: "text-primary underline-primary underline",
+    },
+    {
+      variant: "simple",
+      isActive: true,
+      class: "underline",
+    },
+  ],
+  defaultVariants: {
+    variant: "primary",
+  },
+});
+---
+
+<a
+  href={addLanguagePrefix(href, lang)}
+  class={link({ variant, isActive })}
+  aria-current={isActive ? "page" : undefined}>{label}</a
+>

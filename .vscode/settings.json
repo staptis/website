@@ -1,3 +1,9 @@
 {
-  "conventionalCommits.scopes": ["github actions", "astro", "readme", "seo"]
+  "conventionalCommits.scopes": [
+    "github actions",
+    "astro",
+    "readme",
+    "seo",
+    "i18n"
+  ]
 }

@@ -1,0 +1,16 @@
+{
+  "site": {
+    "title": "Staptis – AI-gestuurde Automatisering van Medische Rapporten met SNOMED CT Integratie",
+    "description": "Staptis transformeert gesprekken tussen arts en patiënt naar gestructureerde medische rapporten met behulp van AI-transcriptie en SNOMED CT-codering. Zorg voor snellere documentatie, naleving en hogere nauwkeurigheid – alles in één gestroomlijnd hulpmiddel."
+  },
+  "navigation": {
+    "home": "Startpagina",
+    "about": "Over ons",
+    "contact": "Contact"
+  },
+  "footer": {
+    "privacy_policy": "Privacybeleid",
+    "terms_of_service": "Gebruiksvoorwaarden",
+    "all_rights_reserved": "Alle rechten voorbehouden."
+  }
+}

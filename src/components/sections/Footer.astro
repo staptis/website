@@ -1,7 +1,10 @@
 ---
+import { getLangFromPath, t } from "@/utils/i18n";
+import Link from "@/components/ui/Link.astro";
 // You can optionally pass props like `logoSrc` and `year`
 const currentYear = new Date().getFullYear();
 const logo = "/logo_with_name.png";
+const lang = getLangFromPath(Astro.url.pathname);
 ---
 
 <footer class="bg-gray-900 py-6 text-white">
@@ -15,15 +18,25 @@ const logo = "/logo_with_name.png";
 
     <!-- Links -->
     <nav class="flex flex-wrap gap-4 text-sm">
-      <a href="/privacy" class="hover:underline">Privacy & Cookies</a>
-      <a href="/terms-of-use" class="hover:underline">Terms of use</a>
+      <Link
+        variant="simple"
+        href="/privacy"
+        label={t(lang, "footer.privacy_policy")}
+      />
+      <Link
+        variant="simple"
+        href="/terms-of-use"
+        label={t(lang, "footer.terms_of_service")}
+      />
     </nav>
   </div>
 
   <!-- Bottom line -->
   <div class="mt-6 px-4 text-center text-xs text-gray-400">
     <p>
-      &copy; <span id="footer-year">{currentYear}</span> Staptis All rights reserved
+      &copy; <span id="footer-year">{currentYear}</span> Staptis {
+        t(lang, "footer.all_rights_reserved")
+      }
     </p>
   </div>
 </footer>

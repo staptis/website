@@ -1,0 +1,16 @@
+{
+  "site": {
+    "title": "Staptis – Automatisation des Rapports Médicaux Alimentée par l'IA avec Intégration SNOMED CT",
+    "description": "Staptis transforme les conversations entre le médecin et le patient en rapports médicaux structurés en utilisant la transcription IA et le codage SNOMED CT. Assurez une documentation plus rapide, la conformité et une plus grande précision – tout cela dans un outil simplifié."
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "footer": {
+    "privacy_policy": "Politique de confidentialité",
+    "terms_of_service": "Conditions d'utilisation",
+    "all_rights_reserved": "Tous droits réservés."
+  }
+}

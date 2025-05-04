@@ -3,6 +3,8 @@ import { ClientRouter } from "astro:transitions";
 import { AstroFont } from "astro-font";
 import { SEO, type Props as SEOProps } from "astro-seo";
 
+import { getLangFromPath, t } from "@/utils/i18n";
+
 import "@/styles/global.css";
 
 import Footer from "@/components/sections/Footer.astro";
@@ -15,16 +17,15 @@ interface Props {
 
 const { seo } = Astro.props;
 
-const title =
-  "Staptis – AI-Powered Medical Report Automation with SNOMED CT Integration";
-const description =
-  "Staptis transforms doctor-patient conversations into structured medical reports using AI transcription and SNOMED CT coding. Ensure faster documentation, compliance, and higher accuracy – all in one streamlined tool.";
+const lang = getLangFromPath(Astro.url.pathname);
+const title = t(lang, "site.title");
+const description = t(lang, "site.description");
 const url = env.PUBLIC_URL;
 const ogImage = "/logo.png";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <SEO
       charset="utf-8"

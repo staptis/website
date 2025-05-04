@@ -1,0 +1,16 @@
+{
+  "site": {
+    "title": "Staptis – AI-Powered Medical Report Automation with SNOMED CT Integration",
+    "description": "Staptis transforms doctor-patient conversations into structured medical reports using AI transcription and SNOMED CT coding. Ensure faster documentation, compliance, and higher accuracy – all in one streamlined tool."
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "footer": {
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "all_rights_reserved": "All rights reserved."
+  }
+}
