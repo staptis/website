@@ -1,4 +1,6 @@
-# CI/CD
+# Website
+
+## CI/CD setup
 
 - [setup Github organization secrets to access Cloudflare](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/)
 - Github
@@ -15,7 +17,3 @@
   - deployments on Github
   - auto delete preview deployment from PR request on PR close
   - cache pnpm install and build output
-
-## Todo
-
-[] Github action setup Cloudflare auto-expire of old deployments
