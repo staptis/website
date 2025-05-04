@@ -1,11 +1,20 @@
 ---
+import { cn } from "@/utils/cn";
+
 interface Props {
-  href: string
-  label: string
+  href: string;
+  label: string;
 }
 
 const { href, label } = Astro.props;
 const currentPath = Astro.url.pathname;
+const isActive = currentPath === href;
+const className = cn(
+  "hover:underline underline-offset-4 hover:underline-primary p-2 hover:text-primary",
+  isActive && "underline text-primary underline-primary",
+);
 ---
 
-<a href={href} class={`hover:underline underline-offset-4 hover:underline-primary p-2 hover:text-primary rounded-xl ${currentPath === href ? "underline text-primary underline-primary" : ""}`}  aria-current={currentPath === href ? "page" : undefined}>{label}</a>
+<a href={href} class={className} aria-current={isActive ? "page" : undefined}
+  >{label}</a
+>

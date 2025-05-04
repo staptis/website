@@ -3,11 +3,14 @@
 const currentYear = new Date().getFullYear();
 const logo = "/logo_with_name.png";
 ---
-<footer class="bg-gray-900 text-white py-6">
-  <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+
+<footer class="bg-gray-900 py-6 text-white">
+  <div
+    class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row"
+  >
     <!-- Logo -->
     <div class="flex items-center gap-2">
-      <img src=`${logo}` alt="Logo" class="h-8 w-auto" />
+      <img src={logo} alt="Logo" class="h-8 w-auto" />
     </div>
 
     <!-- Links -->
@@ -18,7 +21,12 @@ const logo = "/logo_with_name.png";
   </div>
 
   <!-- Bottom line -->
-  <div class="text-center text-xs text-gray-400 mt-6 px-4">
-    © {currentYear} Staptis. All rights reserved
+  <div class="mt-6 px-4 text-center text-xs text-gray-400">
+    <p>
+      &copy; <span id="footer-year">{currentYear}</span> Staptis All rights reserved
+    </p>
   </div>
 </footer>
+<script is:inline>
+  document.getElementById("footer-year").innerText = new Date().getFullYear();
+</script>

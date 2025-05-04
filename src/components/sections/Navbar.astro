@@ -2,20 +2,23 @@
 import NavLink from "@/components/ui/NavLink.astro";
 const logo = "/logo_with_name.png";
 ---
+
 <header
   id="header"
-  class="fixed top-4 left-4 right-4 z-50 transition-all duration-500 rounded-2xl bg-white/90 shadow-xl
-         px-6 py-4 backdrop-blur-sm bg-opacity-100"
+  class="bg-opacity-100 fixed top-4 right-4 left-4 z-50 rounded-2xl bg-white/90 px-6 py-4 shadow-xl backdrop-blur-sm transition-all duration-500"
   role="banner"
 >
-  <div class="flex justify-between items-center">
+  <div class="flex items-center justify-between">
     <!-- Logo -->
     <a href="/" class="flex items-center space-x-3" aria-label="Homepage">
-      <img src=`${logo}` alt="Staptis logo" class="h-8 w-auto" />
+      <img src={logo} alt="Staptis logo" class="h-8 w-auto" />
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex space-x-6 text-gray-700 font-medium" aria-label="Main navigation">
+    <nav
+      class="hidden space-x-6 font-medium text-gray-700 md:flex"
+      aria-label="Main navigation"
+    >
       <NavLink href="/" label="Home" />
       <NavLink href="/about" label="About" />
       <NavLink href="/contact" label="Contact" />
@@ -24,14 +27,21 @@ const logo = "/logo_with_name.png";
     <!-- Hamburger Menu -->
     <button
       id="menu-button"
-      class="md:hidden focus:outline-none"
+      class="focus:outline-none md:hidden"
       aria-label="Toggle menu"
       aria-controls="mobile-nav"
       aria-expanded="false"
     >
-      <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" stroke-width="2"
-           viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 6h16M4 12h16M4 18h16" />
+      <svg
+        class="h-6 w-6 text-gray-800"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
   </div>
@@ -39,7 +49,7 @@ const logo = "/logo_with_name.png";
   <!-- Mobile Navigation -->
   <nav
     id="mobile-nav"
-    class="md:hidden mt-4 hidden flex flex-col space-y-2"
+    class="mt-4 flex hidden flex-col space-y-2 md:hidden"
     aria-label="Mobile navigation"
   >
     <NavLink href="/" label="Home" />
@@ -49,23 +59,31 @@ const logo = "/logo_with_name.png";
 
   <!-- Plain inline script (runs on client) -->
   <script>
-    if (typeof window !== 'undefined') {
-      const menuButton = document.getElementById('menu-button');
-      const mobileNav = document.getElementById('mobile-nav');
-      const header = document.getElementById('header');
+    if (typeof window !== "undefined") {
+      const menuButton = document.getElementById("menu-button");
+      const mobileNav = document.getElementById("mobile-nav");
+      const header = document.getElementById("header");
 
-      menuButton?.addEventListener('click', () => {
-        const isOpen = mobileNav?.classList.toggle('hidden');
-        menuButton.setAttribute('aria-expanded', (!isOpen).toString());
+      menuButton?.addEventListener("click", () => {
+        const isOpen = mobileNav?.classList.toggle("hidden");
+        menuButton.setAttribute("aria-expanded", (!isOpen).toString());
       });
 
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
-          header?.classList.add("bg-white/50", "backdrop-blur-none", "scale-[0.90]");
+          header?.classList.add(
+            "bg-white/50",
+            "backdrop-blur-none",
+            "scale-[0.90]",
+          );
           header?.classList.remove("bg-white/90");
         } else {
           header?.classList.add("bg-white/90");
-          header?.classList.remove("bg-white/50", "backdrop-blur-none", "scale-[0.90]");
+          header?.classList.remove(
+            "bg-white/50",
+            "backdrop-blur-none",
+            "scale-[0.90]",
+          );
         }
       });
     }
