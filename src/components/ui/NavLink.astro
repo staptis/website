@@ -10,8 +10,8 @@ const { href, label } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isActive = currentPath === href;
 const className = cn(
-  "hover:underline underline-offset-4 hover:underline-primary p-2 hover:text-primary",
-  isActive && "underline text-primary underline-primary",
+  "hover:underline-primary p- hover:text-primary underline-offset-4 hover:underline",
+  isActive && "text-primary underline-primary underline",
 );
 ---
 
