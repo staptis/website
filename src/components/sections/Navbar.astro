@@ -1,8 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import { getLangFromPath, t } from "@/utils/i18n";
 
 import Link from "@/components/ui/Link.astro";
-const logo = "/logo_with_name.png";
+import logo from "@/assets/logo_with_name.png";
+
 const lang = getLangFromPath(Astro.url.pathname);
 ---
 
@@ -14,7 +16,7 @@ const lang = getLangFromPath(Astro.url.pathname);
   <div class="flex items-center justify-between">
     <!-- Logo -->
     <a href="" aria-label="Homepage">
-      <img src={logo} alt="Staptis logo" class="h-8 w-auto" />
+      <Image src={logo} alt="Staptis logo" height={32} />
     </a>
 
     <!-- Desktop Navigation -->
@@ -28,25 +30,27 @@ const lang = getLangFromPath(Astro.url.pathname);
     </nav>
 
     <!-- Hamburger Menu -->
-    <button
-      id="menu-button"
-      class="focus:outline-none md:hidden"
-      aria-label="Toggle menu"
-      aria-controls="mobile-nav"
-      aria-expanded="false"
-    >
-      <svg
-        class="h-6 w-6 text-gray-800"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+    <menu-button>
+      <button
+        id="menu-button"
+        class="focus:outline-none md:hidden"
+        aria-label="Toggle menu"
+        aria-controls="mobile-nav"
+        aria-expanded="false"
       >
-        <path d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+        <svg
+          class="h-6 w-6 text-gray-800"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </menu-button>
   </div>
 
   <!-- Mobile Navigation -->
@@ -67,9 +71,27 @@ const lang = getLangFromPath(Astro.url.pathname);
       const mobileNav = document.getElementById("mobile-nav");
       const header = document.getElementById("header");
 
-      menuButton?.addEventListener("click", () => {
-        const isOpen = mobileNav?.classList.toggle("hidden");
-        menuButton.setAttribute("aria-expanded", (!isOpen).toString());
+      customElements.define(
+        "menu-button",
+        class extends HTMLElement {
+          connectedCallback() {
+            menuButton?.addEventListener("click", () => {
+              const isOpen = mobileNav?.classList.toggle("hidden");
+              menuButton.setAttribute("aria-expanded", (!isOpen).toString());
+            });
+          }
+        },
+      );
+
+      window.addEventListener("click", (e) => {
+        if (
+          !menuButton?.contains(e.target as Node) &&
+          !mobileNav?.contains(e.target as Node) &&
+          !mobileNav?.classList.contains("hidden")
+        ) {
+          mobileNav?.classList.add("hidden");
+          menuButton?.setAttribute("aria-expanded", "false");
+        }
       });
 
       window.addEventListener("scroll", () => {

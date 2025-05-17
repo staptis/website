@@ -1,9 +1,11 @@
 ---
+import { Image } from "astro:assets";
 import { getLangFromPath, t } from "@/utils/i18n";
+
 import Link from "@/components/ui/Link.astro";
-// You can optionally pass props like `logoSrc` and `year`
+import logo from "@/assets/logo_with_name.png";
+
 const currentYear = new Date().getFullYear();
-const logo = "/logo_with_name.png";
 const lang = getLangFromPath(Astro.url.pathname);
 ---
 
@@ -13,7 +15,7 @@ const lang = getLangFromPath(Astro.url.pathname);
   >
     <!-- Logo -->
     <a href="" aria-label="Homepage">
-      <img src={logo} alt="Staptis logo" class="h-8 w-auto" />
+      <Image src={logo} alt="Staptis logo" height={32} />
     </a>
 
     <!-- Links -->
