@@ -14,22 +14,18 @@ const lang = getLangFromPath(Astro.url.pathname);
     class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row"
   >
     <!-- Logo -->
-    <a href="" aria-label="Homepage">
+    <Link href="/" aria-label="Homepage" variant="simple">
       <Image src={logo} alt="Staptis logo" height={32} />
-    </a>
+    </Link>
 
     <!-- Links -->
     <nav class="flex flex-wrap gap-4 text-sm">
-      <Link
-        variant="simple"
-        href="/privacy"
-        label={t(lang, "footer.privacy_policy")}
-      />
-      <Link
-        variant="simple"
-        href="/terms-of-use"
-        label={t(lang, "footer.terms_of_service")}
-      />
+      <Link variant="simple" href="/privacy"
+        >{t(lang, "footer.privacy_policy")}</Link
+      >
+      <Link variant="simple" href="/terms-of-use"
+        >{t(lang, "footer.terms_of_service")}</Link
+      >
     </nav>
   </div>
 

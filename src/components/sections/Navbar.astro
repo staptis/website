@@ -15,18 +15,18 @@ const lang = getLangFromPath(Astro.url.pathname);
 >
   <div class="flex items-center justify-between">
     <!-- Logo -->
-    <a href="" aria-label="Homepage">
+    <Link href="/" aria-label="Homepage" variant="simple">
       <Image src={logo} alt="Staptis logo" height={32} />
-    </a>
+    </Link>
 
     <!-- Desktop Navigation -->
     <nav
       class="hidden space-x-6 font-medium text-gray-700 md:flex"
       aria-label="Main navigation"
     >
-      <Link href="" label={t(lang, "navigation.home")} />
-      <Link href="/about" label={t(lang, "navigation.about")} />
-      <Link href="/contact" label={t(lang, "navigation.contact")} />
+      <Link href="/">{t(lang, "navigation.home")}</Link>
+      <Link href="/about">{t(lang, "navigation.about")}</Link>
+      <Link href="/contact">{t(lang, "navigation.contact")}</Link>
     </nav>
 
     <!-- Hamburger Menu -->
@@ -58,9 +58,9 @@ const lang = getLangFromPath(Astro.url.pathname);
     class="mt-4 flex hidden flex-col space-y-2 md:hidden"
     aria-label="Mobile navigation"
   >
-    <Link href="/" label={t(lang, "navigation.home")} />
-    <Link href="/about" label={t(lang, "navigation.about")} />
-    <Link href="/contact" label={t(lang, "navigation.contact")} />
+    <Link href="/">{t(lang, "navigation.home")}</Link>
+    <Link href="/about">{t(lang, "navigation.about")}</Link>
+    <Link href="/contact">{t(lang, "navigation.contact")}</Link>
   </nav>
 
   <script>

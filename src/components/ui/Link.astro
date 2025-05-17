@@ -9,12 +9,11 @@ import { cva } from "class-variance-authority";
 
 interface Props {
   href: string;
-  label: string;
   variant?: "simple" | "primary";
   className?: string;
 }
 
-const { href, label } = Astro.props;
+const { href } = Astro.props;
 const currentPath = resolveRelativePath(Astro.url.pathname);
 const isActive = currentPath === href;
 const variant = Astro.props.variant || "primary";
@@ -53,5 +52,5 @@ const link = cva(["hover:underline", Astro.props.className], {
 <a
   href={addLanguagePrefix(href, lang)}
   class={link({ variant, isActive })}
-  aria-current={isActive ? "page" : undefined}>{label}</a
+  aria-current={isActive ? "page" : undefined}><slot /></a
 >
