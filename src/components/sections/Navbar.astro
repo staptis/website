@@ -30,10 +30,9 @@ const lang = getLangFromPath(Astro.url.pathname);
     </nav>
 
     <!-- Hamburger Menu -->
-    <menu-button>
+    <menu-button class="focus:outline-none md:hidden">
       <button
         id="menu-button"
-        class="focus:outline-none md:hidden"
         aria-label="Toggle menu"
         aria-controls="mobile-nav"
         aria-expanded="false"
@@ -64,53 +63,50 @@ const lang = getLangFromPath(Astro.url.pathname);
     <Link href="/contact" label={t(lang, "navigation.contact")} />
   </nav>
 
-  <!-- Plain inline script (runs on client) -->
   <script>
-    if (typeof window !== "undefined") {
-      const menuButton = document.getElementById("menu-button");
-      const mobileNav = document.getElementById("mobile-nav");
-      const header = document.getElementById("header");
+    const menuButton = document.getElementById("menu-button");
+    const mobileNav = document.getElementById("mobile-nav");
+    const header = document.getElementById("header");
 
-      customElements.define(
-        "menu-button",
-        class extends HTMLElement {
-          connectedCallback() {
-            menuButton?.addEventListener("click", () => {
-              const isOpen = mobileNav?.classList.toggle("hidden");
-              menuButton.setAttribute("aria-expanded", (!isOpen).toString());
-            });
-          }
-        },
-      );
-
-      window.addEventListener("click", (e) => {
-        if (
-          !menuButton?.contains(e.target as Node) &&
-          !mobileNav?.contains(e.target as Node) &&
-          !mobileNav?.classList.contains("hidden")
-        ) {
-          mobileNav?.classList.add("hidden");
-          menuButton?.setAttribute("aria-expanded", "false");
+    customElements.define(
+      "menu-button",
+      class extends HTMLElement {
+        connectedCallback() {
+          menuButton?.addEventListener("click", () => {
+            const isOpen = mobileNav?.classList.toggle("hidden");
+            menuButton.setAttribute("aria-expanded", (!isOpen).toString());
+          });
         }
-      });
+      },
+    );
 
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          header?.classList.add(
-            "bg-white/50",
-            "backdrop-blur-none",
-            "scale-[0.90]",
-          );
-          header?.classList.remove("bg-white/90");
-        } else {
-          header?.classList.add("bg-white/90");
-          header?.classList.remove(
-            "bg-white/50",
-            "backdrop-blur-none",
-            "scale-[0.90]",
-          );
-        }
-      });
-    }
+    window.addEventListener("click", (e) => {
+      if (
+        !menuButton?.contains(e.target as Node) &&
+        !mobileNav?.contains(e.target as Node) &&
+        !mobileNav?.classList.contains("hidden")
+      ) {
+        mobileNav?.classList.add("hidden");
+        menuButton?.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header?.classList.add(
+          "bg-white/50",
+          "backdrop-blur-none",
+          "scale-[0.90]",
+        );
+        header?.classList.remove("bg-white/90");
+      } else {
+        header?.classList.add("bg-white/90");
+        header?.classList.remove(
+          "bg-white/50",
+          "backdrop-blur-none",
+          "scale-[0.90]",
+        );
+      }
+    });
   </script>
 </header>
