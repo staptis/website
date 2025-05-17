@@ -52,9 +52,7 @@ function interpolate(template: string, vars?: Record<string, string>): string {
 export function getLangFromPath(pathname: string): Language {
   const parts = pathname.split("/");
   const lang = parts[1];
-
-  const supported = ["en", "nl", "fr"]; // extend as needed
-  return supported.includes(lang) ? (lang as Language) : "en"; // fallback to 'en'
+  return LANGUAGES.includes(lang as Language) ? (lang as Language) : "en"; // fallback to 'en'
 }
 
 export function resolveRelativePath(pathname: string): string {
@@ -70,12 +68,9 @@ export function resolveRelativePath(pathname: string): string {
   return pathname;
 }
 
-export function addLanguagePrefix(pathname: string, lang: string): string {
+export function addLanguagePrefix(pathname: string, lang: Language): string {
   // If the language is supported and the pathname doesn't already start with a language, prepend it
-  if (
-    LANGUAGES.includes(lang as Language) &&
-    !pathname.startsWith(`/${lang}`)
-  ) {
+  if (LANGUAGES.includes(lang) && !pathname.startsWith(`/${lang}`)) {
     return `/${lang}${pathname}`;
   }
 

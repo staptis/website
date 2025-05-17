@@ -1,25 +1,23 @@
 ---
-import { cn } from "@/utils/cn";
 import {
   resolveRelativePath,
   addLanguagePrefix,
   getLangFromPath,
 } from "@/utils/i18n";
+import type { HTMLAttributes } from "astro/types";
 import { cva } from "class-variance-authority";
 
-interface Props {
-  href: string;
+interface Props extends HTMLAttributes<"a"> {
   variant?: "simple" | "primary";
-  className?: string;
+  href: string;
 }
 
-const { href } = Astro.props;
 const currentPath = resolveRelativePath(Astro.url.pathname);
-const isActive = currentPath === href;
-const variant = Astro.props.variant || "primary";
+const { variant, href, ...props } = Astro.props;
+const isActive = currentPath === href || currentPath === href + "/";
 const lang = getLangFromPath(Astro.url.pathname);
 
-const link = cva(["hover:underline", Astro.props.className], {
+const link = cva(["hover:underline", Astro.props.class], {
   variants: {
     variant: {
       simple: ["text-white"],
@@ -50,7 +48,8 @@ const link = cva(["hover:underline", Astro.props.className], {
 ---
 
 <a
+  {...props}
   href={addLanguagePrefix(href, lang)}
-  class={link({ variant, isActive })}
+  class={link({ variant: variant, isActive })}
   aria-current={isActive ? "page" : undefined}><slot /></a
 >
