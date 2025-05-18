@@ -1,7 +1,7 @@
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import { env } from "./src/env";
 
 // https://astro.build/config
@@ -13,4 +13,7 @@ export default defineConfig({
   },
   prefetch: true,
   compressHTML: true,
+  image: {
+    service: passthroughImageService(),
+  },
 });
