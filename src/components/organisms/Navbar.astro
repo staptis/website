@@ -20,7 +20,7 @@ const lang = getLangFromPath(Astro.url.pathname);
     <Link href="" aria-label="Homepage" variant="simple">
       <Image src={logo} alt="Staptis logo" height={32} />
     </Link>
-    <div class="flex items-center gap-2">
+    <div>
       <!-- Desktop Navigation -->
       <nav
         class="hidden space-x-6 font-medium text-gray-700 md:flex"
@@ -54,8 +54,8 @@ const lang = getLangFromPath(Astro.url.pathname);
           </svg>
         </Button>
       </menu-button>
-      <LanguagePicker />
     </div>
+    <LanguagePicker />
   </div>
 
   <!-- Mobile Navigation -->
