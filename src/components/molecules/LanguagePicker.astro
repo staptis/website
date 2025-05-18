@@ -20,9 +20,10 @@ const currentPath = resolveRelativePath(Astro.url.pathname);
       aria-expanded="false"
       aria-haspopup="true"
     >
-      <span>{currentLang}</span>
+    <div class="flex items-center gap-2">
+      <span class="uppercase">{currentLang}</span>
       <svg
-        class="-mr-1 ml-2 h-5 w-5"
+        class="h-4 w-4"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -35,6 +36,7 @@ const currentPath = resolveRelativePath(Astro.url.pathname);
           stroke-width="2"
           d="M19 9l-7 7-7-7"></path>
       </svg>
+      </div>
     </Button>
   </lang-button>
 
@@ -47,7 +49,7 @@ const currentPath = resolveRelativePath(Astro.url.pathname);
           <li >
             <a
               href={addLanguagePrefix(currentPath, lang)}}
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white"
+              class="block uppercase px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white"
             >
               {lang}
             </a>
