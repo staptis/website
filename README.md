@@ -11,6 +11,7 @@
   - [Setup custom domain for main branch](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/)
   - [Restrict access only for logged in Cloudflare users for preview domains](https://developers.cloudflare.com/pages/configuration/preview-deployments/)
   - [invite members in cloudflare to access preview environment](https://developers.cloudflare.com/fundamentals/setup/manage-members/manage/)
+  - [setup google login](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/google/), then add login method to application in zero trust
 - In astro.config.mjs set the site as env variable
 - [Github actions upload static files to Cloudflare pages](.github/workflows/cloudflare-pages-deployment.yaml)
   - direct upload with wrangler to Cloudflare pages
