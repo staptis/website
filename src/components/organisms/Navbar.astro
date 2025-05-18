@@ -5,6 +5,7 @@ import { getLangFromPath, t } from "@/utils/i18n";
 import Link from "@/components/atoms/Link.astro";
 import logo from "@/assets/logo_with_name.png";
 import Button from "@/components/atoms/Button.astro";
+import LanguagePicker from "@/components/molecules/LanguagePicker.astro";
 
 const lang = getLangFromPath(Astro.url.pathname);
 ---
@@ -19,96 +20,100 @@ const lang = getLangFromPath(Astro.url.pathname);
     <Link href="" aria-label="Homepage" variant="simple">
       <Image src={logo} alt="Staptis logo" height={32} />
     </Link>
-
-    <!-- Desktop Navigation -->
-    <nav
-      class="hidden space-x-6 font-medium text-gray-700 md:flex"
-      aria-label="Main navigation"
-    >
-      <Link href="">{t(lang, "navigation.home")}</Link>
-      <Link href="/about">{t(lang, "navigation.about")}</Link>
-      <Link href="/contact">{t(lang, "navigation.contact")}</Link>
-    </nav>
-
-    <!-- Hamburger Menu -->
-    <menu-button class="focus:outline-none md:hidden">
-      <Button
-        id="menu-button"
-        variant="simple"
-        aria-label="Toggle menu"
-        aria-controls="mobile-nav"
-        aria-expanded="false"
+    <div class="flex items-center gap-2">
+      <!-- Desktop Navigation -->
+      <nav
+        class="hidden space-x-6 font-medium text-gray-700 md:flex"
+        aria-label="Main navigation"
       >
-        <svg
-          class="h-6 w-6 text-gray-800"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+        <Link href="">{t(lang, "navigation.home")}</Link>
+        <Link href="/about">{t(lang, "navigation.about")}</Link>
+        <Link href="/contact">{t(lang, "navigation.contact")}</Link>
+      </nav>
+
+      <!-- Hamburger Menu -->
+      <menu-button class="focus:outline-none md:hidden">
+        <Button
+          id="menu-button"
+          variant="simple"
+          type="button"
+          aria-label="Toggle menu"
+          aria-controls="mobile-nav"
+          aria-expanded="false"
         >
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </Button>
-    </menu-button>
+          <svg
+            class="h-6 w-6 text-gray-800"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </Button>
+      </menu-button>
+      <LanguagePicker />
+    </div>
   </div>
 
   <!-- Mobile Navigation -->
   <nav
     id="mobile-nav"
-    class="mt-4 flex hidden flex-col space-y-2 md:hidden"
+    class="mt-4 flex hidden flex-col items-center space-y-2 md:hidden"
     aria-label="Mobile navigation"
   >
     <Link href="">{t(lang, "navigation.home")}</Link>
     <Link href="/about">{t(lang, "navigation.about")}</Link>
     <Link href="/contact">{t(lang, "navigation.contact")}</Link>
   </nav>
+</header>
 
-  <script>
+<script>
+  customElements.define(
+    "menu-button",
+    class extends HTMLElement {
+      connectedCallback() {
+        const menuButton = document.getElementById("menu-button");
+        const mobileNav = document.getElementById("mobile-nav");
+        menuButton?.addEventListener("click", () => {
+          const isOpen = mobileNav?.classList.toggle("hidden");
+          menuButton.setAttribute("aria-expanded", (!isOpen).toString());
+        });
+      }
+    },
+  );
+
+  window.addEventListener("click", (e) => {
     const menuButton = document.getElementById("menu-button");
     const mobileNav = document.getElementById("mobile-nav");
+    if (
+      !menuButton?.contains(e.target as Node) &&
+      !mobileNav?.contains(e.target as Node) &&
+      !mobileNav?.classList.contains("hidden")
+    ) {
+      mobileNav?.classList.add("hidden");
+      menuButton?.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
-
-    customElements.define(
-      "menu-button",
-      class extends HTMLElement {
-        connectedCallback() {
-          menuButton?.addEventListener("click", () => {
-            const isOpen = mobileNav?.classList.toggle("hidden");
-            menuButton.setAttribute("aria-expanded", (!isOpen).toString());
-          });
-        }
-      },
-    );
-
-    window.addEventListener("click", (e) => {
-      if (
-        !menuButton?.contains(e.target as Node) &&
-        !mobileNav?.contains(e.target as Node) &&
-        !mobileNav?.classList.contains("hidden")
-      ) {
-        mobileNav?.classList.add("hidden");
-        menuButton?.setAttribute("aria-expanded", "false");
-      }
-    });
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        header?.classList.add(
-          "bg-white/50",
-          "backdrop-blur-none",
-          "scale-[0.90]",
-        );
-        header?.classList.remove("bg-white/90");
-      } else {
-        header?.classList.add("bg-white/90");
-        header?.classList.remove(
-          "bg-white/50",
-          "backdrop-blur-none",
-          "scale-[0.90]",
-        );
-      }
-    });
-  </script>
-</header>
+    if (window.scrollY > 50) {
+      header?.classList.add(
+        "bg-white/50",
+        "backdrop-blur-none",
+        "scale-[0.90]",
+      );
+      header?.classList.remove("bg-white/90");
+    } else {
+      header?.classList.add("bg-white/90");
+      header?.classList.remove(
+        "bg-white/50",
+        "backdrop-blur-none",
+        "scale-[0.90]",
+      );
+    }
+  });
+</script>
