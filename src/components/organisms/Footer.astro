@@ -38,6 +38,10 @@ const lang = getLangFromPath(Astro.url.pathname);
     </p>
   </div>
 </footer>
-<script is:inline>
-  document.getElementById("footer-year").innerText = new Date().getFullYear();
+
+<script>
+  const footerYear = document.getElementById("footer-year");
+  if (footerYear) {
+    footerYear.innerText = new Date().getFullYear().toString();
+  }
 </script>
