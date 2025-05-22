@@ -6,6 +6,7 @@ import { env } from "./src/env";
 
 // https://astro.build/config
 export default defineConfig({
+  output: "static",
   site: env.PUBLIC_URL,
   integrations: [sitemap()],
   vite: {
