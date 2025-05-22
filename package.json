@@ -6,10 +6,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "production": "wrangler pages dev ./dist",
+    "build:emails": "npx mjml functions/src/services/emailTemplates/*.mjml -o functions/src/services/emailTemplates/"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.3.0",
+    "@cloudflare/pages-plugin-static-forms": "^1.0.3",
     "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.7.0",
     "astro-font": "^1.1.0",
@@ -22,6 +25,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "mjml": "^4.15.3",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11",

@@ -1,0 +1,15 @@
+---
+import Button from "@/components/atoms/Button.astro";
+import Layout from "@/components/templates/Layout.astro";
+import { LANGUAGES, getLangFromPath, t } from "@/utils/i18n";
+
+export function getStaticPaths() {
+  return LANGUAGES.map((locale) => ({
+    params: { lang: locale },
+  }));
+}
+
+const lang = getLangFromPath(Astro.url.pathname);
+---
+
+<Layout><h1>Submission succeed</h1></Layout>

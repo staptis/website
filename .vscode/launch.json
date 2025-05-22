@@ -2,11 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Remote pnpm dev",
+      "name": "pnpm dev",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["run", "dev", "--host", "0.0.0.0", "--port", "3000"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "pnpm production",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "production", "--ip", "0.0.0.0", "--port", "3001"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }
