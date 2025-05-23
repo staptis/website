@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "production": "wrangler pages dev ./dist",
-    "build:emails": "npx mjml functions/src/services/emailTemplates/*.mjml -o functions/src/services/emailTemplates/"
+    "build:emails": "pnpm dlx mjml functions/src/emailTemplates/**/*.mjml -o build/emails"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.3.0",

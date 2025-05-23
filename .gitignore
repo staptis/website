@@ -1,5 +1,6 @@
 # build output
 dist/
+build/
 
 # generated types
 .astro/
@@ -26,3 +27,4 @@ pnpm-debug.log*
 # cloudflare
 .wrangler/
 .dev.vars
+.github/workflows/build
