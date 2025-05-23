@@ -12,5 +12,14 @@
     "privacy_policy": "Privacy Policy",
     "terms_of_service": "Terms of Service",
     "all_rights_reserved": "All rights reserved."
+  },
+  "contact": {
+    "get_in_touch": "Interested in a demo or have questions about our platform? We'd love to hear from you. Fill out the form and our team will get back to you shortly.",
+    "name": "Name",
+    "email": "Email",
+    "company_name": "Company Name",
+    "send_message": "Send Us Your Message",
+    "message_sent": "Your message has been sent successfully!",
+    "error_sending_message": "There was an error sending your message. Please try again."
   }
 }

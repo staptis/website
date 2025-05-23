@@ -12,5 +12,14 @@
     "privacy_policy": "Politique de confidentialité",
     "terms_of_service": "Conditions d'utilisation",
     "all_rights_reserved": "Tous droits réservés."
+  },
+  "contact": {
+    "get_in_touch": "Intéressé par une démo ou avez-vous des questions sur notre plateforme ? Nous serions ravis de vous aider. Remplissez le formulaire et notre équipe vous répondra rapidement.",
+    "name": "Nom",
+    "email": "E-mail",
+    "company_name": "Nom de l’entreprise",
+    "send_message": "Envoyez-nous votre message",
+    "message_sent": "Votre message a été envoyé avec succès !",
+    "error_sending_message": "Une erreur est survenue lors de l’envoi de votre message. Veuillez réessayer."
   }
 }

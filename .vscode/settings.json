@@ -5,6 +5,7 @@
     "readme",
     "seo",
     "i18n",
-    "wrangler"
+    "wrangler",
+    "localization"
   ]
 }
