@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva } from "class-variance-authority";
+
+interface Props extends HTMLAttributes<"input"> {}
+
+const props = Astro.props;
+
+const input = cva([
+  "block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+  Astro.props.class,
+]);
+---
+
+<div class="space-y-1">
+  <input class={input()} {...props} />
+</div>

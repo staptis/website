@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva } from "class-variance-authority";
+
+interface Props extends HTMLAttributes<"label"> {
+  variant?: "default";
+  required?: boolean;
+}
+
+const { variant, required = false, ...props } = Astro.props;
+
+const label = cva(["block text-sm font-medium", Astro.props.class], {
+  variants: {
+    variant: {
+      default: "",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+---
+
+<label {...props} class={label({ variant })}>
+  <slot />
+  {required && <span>*</span>}
+</label>
