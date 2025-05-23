@@ -1,5 +1,7 @@
 ---
 import Layout from "@/components/templates/Layout.astro";
+import Section from "@/components/organisms/Section.astro";
+
 import { LANGUAGES, getLangFromPath, t } from "@/utils/i18n";
 
 export function getStaticPaths() {
@@ -11,4 +13,6 @@ export function getStaticPaths() {
 const lang = getLangFromPath(Astro.url.pathname);
 ---
 
-<Layout>{t(lang, "navigation.home")}</Layout>
+<Layout>
+  <Section first>{t(lang, "navigation.home")}</Section>
+</Layout>
