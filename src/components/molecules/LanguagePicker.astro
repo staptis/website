@@ -6,12 +6,14 @@ import {
   addLanguagePrefix,
 } from "@/utils/i18n";
 import Button from "@/components/atoms/Button.astro";
+import globe from "@/assets/globe.svg";
+import { cn } from "@/utils/cn";
 
 const currentLang = getLangFromPath(Astro.url.pathname);
 const currentPath = resolveRelativePath(Astro.url.pathname);
 ---
 
-<div class="relative">
+<div class="relative w-24">
   <lang-button>
     <Button
       id="lang-toggle-btn"
@@ -21,6 +23,12 @@ const currentPath = resolveRelativePath(Astro.url.pathname);
       aria-haspopup="true"
     >
     <div class="flex items-center gap-2">
+      <img
+        src={globe.src}
+        alt="Language"
+        width="16"
+        height="16"
+      />
       <span class="uppercase">{currentLang}</span>
       <svg
         class="h-4 w-4"
@@ -42,14 +50,14 @@ const currentPath = resolveRelativePath(Astro.url.pathname);
 
   <ul
     id="lang-list"
-    class="hidden ring-opacity-5 absolute right-0 z-10 mt-2 w-18 rounded-md bg-white shadow-lg ring-1 ring-black focus:outline-none"
+    class="hidden ring-opacity-5 absolute right-0 z-10 mt-2 w-24 rounded-md bg-white shadow-lg ring-1 ring-black focus:outline-none"
   >
     {
-      LANGUAGES.filter((lang) => lang !== currentLang).map((lang) => (
+      LANGUAGES.filter((lang) => lang !== currentLang).map((lang, index) => (
           <li >
             <a
               href={addLanguagePrefix(currentPath, lang)}}
-              class="block uppercase px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white"
+              class={cn('block uppercase px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white',  index === 0 && 'rounded-t-md', index === LANGUAGES.length - 2 && 'rounded-b-md')}
             >
               {lang}
             </a>
