@@ -1,10 +1,14 @@
 import type { IEmailService, IFormContact } from "@/services/serviceTypes";
 import welcomeEmail from "@/services/emailTemplates/welcomeEmail";
+import { Env } from "@/types";
 
 export class ResendEmailService implements IEmailService {
   apiKey: string;
-  constructor(apiKey: string) {
-    this.apiKey = apiKey;
+  constructor(env: Env) {
+    if (!env.RESEND_API_KEY) {
+      throw new Error("RESEND_API_KEY env is required");
+    }
+    this.apiKey = env.RESEND_API_KEY as string;
   }
   async sendEmail(data: IFormContact): Promise<void> {
     const { name, email, companyName } = data;
