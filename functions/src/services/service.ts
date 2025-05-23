@@ -1,12 +1,12 @@
-import { LogEmailService } from "@/services/logEmailService";
-import { LogStorageService } from "@/services/logStorageService";
+import { LogEmailService } from "@/services/emailService/logEmailService";
+import { LogStorageService } from "@/services/storageService/logStorageService";
 import {
   IEmailService,
   IFormContact,
   IStorageService,
 } from "@/services/serviceTypes";
 import { Env, Language } from "@/types";
-import { ResendEmailService } from "./resendEmailService";
+import { ResendEmailService } from "@/services/emailService/resendEmailService";
 
 export class Service {
   formStorageService: IStorageService;
@@ -27,7 +27,7 @@ export class Service {
         this.emailService = new LogEmailService();
         break;
       case "RESEND":
-        this.emailService = new ResendEmailService(env);
+        this.emailService = new ResendEmailService(env, this.language);
         break;
       default:
         this.emailService = new LogEmailService();

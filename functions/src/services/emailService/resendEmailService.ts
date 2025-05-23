@@ -1,13 +1,15 @@
 import type { IEmailService, IFormContact } from "@/services/serviceTypes";
-import welcomeEmail from "@/services/emailTemplates/welcomeEmail";
-import { Env } from "@/types";
+import welcomeEmail from "@/emailTemplates/welcomeEmail/welcomeEmailTemplate";
+import { Env, Language } from "@/types";
 
 export class ResendEmailService implements IEmailService {
+  language: Language;
   apiKey: string;
-  constructor(env: Env) {
+  constructor(env: Env, language: Language) {
     if (!env.RESEND_API_KEY) {
       throw new Error("RESEND_API_KEY env is required");
     }
+    this.language = language;
     this.apiKey = env.RESEND_API_KEY as string;
   }
   async sendEmail(data: IFormContact): Promise<void> {
@@ -24,7 +26,7 @@ export class ResendEmailService implements IEmailService {
           from: "no-reply@staptis.com",
           to: [email],
           subject: "Thanks for contacting us",
-          html: welcomeEmail.replace("{{name}}", name),
+          html: welcomeEmail({ language: this.language, name }),
         }),
       });
     } catch (error) {
