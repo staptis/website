@@ -1,6 +1,7 @@
 ---
-import Button from "@/components/atoms/Button.astro";
 import Layout from "@/components/templates/Layout.astro";
+import Section from "@/components/organisms/Section.astro";
+
 import { LANGUAGES, getLangFromPath, t } from "@/utils/i18n";
 
 export function getStaticPaths() {
@@ -12,4 +13,6 @@ export function getStaticPaths() {
 const lang = getLangFromPath(Astro.url.pathname);
 ---
 
-<Layout><h1>Submission succeed</h1></Layout>
+<Layout>
+  <Section first>{t(lang, "contact.error_sending_message")}</Section>
+</Layout>

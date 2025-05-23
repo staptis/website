@@ -18,6 +18,6 @@ export async function onRequestPost(
 
   return new Response(null, {
     status: 303,
-    headers: { Location: `/${language}/contact-success` },
+    headers: { Location: `/${language}/contact/success` },
   });
 }
