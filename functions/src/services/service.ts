@@ -13,7 +13,7 @@ export class Service {
   emailService: IEmailService;
   language: Language;
 
-  constructor(language: Language, env: Env) {
+  constructor(env: Env, language: Language) {
     this.language = language;
     switch (env.STORAGE_SERVICE) {
       case "LOG":
@@ -27,7 +27,7 @@ export class Service {
         this.emailService = new LogEmailService();
         break;
       case "RESEND":
-        this.emailService = new ResendEmailService(env, this.language);
+        this.emailService = new ResendEmailService(env);
         break;
       default:
         this.emailService = new LogEmailService();

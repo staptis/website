@@ -13,7 +13,7 @@ export async function onRequestPost(
   if (!isValidEmail) {
     return Response.redirect(`/${language}/contact-error`, 303);
   }
-  const services = new Service(language, context.env);
+  const services = new Service(context.env, language);
   context.waitUntil(services.handleFormSubmission(formData));
 
   return new Response(null, {
