@@ -4,6 +4,7 @@
     "astro",
     "readme",
     "seo",
-    "i18n"
+    "i18n",
+    "wrangler"
   ]
 }
