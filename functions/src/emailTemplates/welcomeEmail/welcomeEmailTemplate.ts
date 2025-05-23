@@ -7,7 +7,7 @@ interface IWelcomeEmailTemplates {
 }
 export default function welcomeEmail(data: IWelcomeEmailTemplates) {
   const { language, name } = data;
-  let emailTemplates;
+  let emailTemplates = welcomeEmailEnglish;
   if (language === "en") {
     emailTemplates = welcomeEmailEnglish;
   } else if (language === "nl") {
