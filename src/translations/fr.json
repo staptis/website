@@ -1,7 +1,7 @@
 {
   "site": {
-    "title": "Staptis – Automatisation des Rapports Médicaux Alimentée par l'IA avec Intégration SNOMED CT",
-    "description": "Staptis transforme les conversations entre le médecin et le patient en rapports médicaux structurés en utilisant la transcription IA et le codage SNOMED CT. Assurez une documentation plus rapide, la conformité et une plus grande précision – tout cela dans un outil simplifié."
+    "title": "Staptis – Automatisation des rapports médicaux par IA avec intégration SNOMED CT",
+    "description": "Staptis transforme les conversations médecin-patient en rapports médicaux structurés grâce à la transcription IA et au codage SNOMED CT. Assurez une documentation plus rapide, conforme et précise – le tout dans un outil fluide."
   },
   "navigation": {
     "home": "Accueil",
@@ -14,12 +14,63 @@
     "all_rights_reserved": "Tous droits réservés."
   },
   "contact": {
-    "get_in_touch": "Intéressé par une démo ou avez-vous des questions sur notre plateforme ? Nous serions ravis de vous aider. Remplissez le formulaire et notre équipe vous répondra rapidement.",
+    "get_in_touch": "Intéressé par une démo ou des questions sur notre plateforme ? Nous serions ravis de vous aider. Remplissez le formulaire et notre équipe vous répondra rapidement.",
     "name": "Nom",
     "email": "E-mail",
     "company_name": "Nom de l’entreprise",
-    "send_message": "Envoyez-nous votre message",
+    "send_message": "Envoyez votre message",
     "message_sent": "Votre message a été envoyé avec succès !",
-    "error_sending_message": "Une erreur est survenue lors de l’envoi de votre message. Veuillez réessayer."
+    "error_sending_message": "Une erreur est survenue lors de l’envoi. Veuillez réessayer."
+  },
+  "cta": {
+    "demo": "Demander une démo",
+    "contact_us": "Contactez-nous"
+  },
+  "homepage": {
+    "hero": {
+      "title": "Passez moins de temps à la paperasse. Plus de temps avec vos patients.",
+      "subtitle": "Staptis transforme vos enregistrements de consultation en rapports médicaux structurés et modifiables — de manière sécurisée et instantanée."
+    },
+    "problem": {
+      "title": "Vous passez encore des heures à rédiger des rapports après chaque consultation ?",
+      "description": "Staptis vous permet de vous concentrer sur vos patients pendant que nous gérons la paperasse — avec précision et automatisation.",
+      "bullet1": {
+        "title": "Libérez-vous des tâches administratives",
+        "description": "Ne perdez plus de temps à documenter de manière répétitive. Gagnez du temps et améliorez votre flux de travail."
+      },
+      "bullet2": {
+        "title": "Obtenez des rapports structurés instantanément",
+        "description": "Nous transformons l’audio de consultation en rapports clairs, modifiables — prêts pour votre dossier médical électronique."
+      },
+      "bullet3": {
+        "title": "Réduisez la charge cognitive et le burnout",
+        "description": "Restez pleinement présent auprès de vos patients. Laissez-nous gérer l’administratif."
+      }
+    },
+    "how_it_works": {
+      "title": "Comment ça marche",
+      "step1": {
+        "title": "Choisissez votre modèle",
+        "description": "Explorez une sélection soignée de modèles médicaux adaptés à différentes spécialités et cas."
+      },
+      "step2": {
+        "title": "Ajoutez le contexte médical",
+        "description": "Capturez facilement les détails du patient — via transcription en direct ou saisie manuelle — permettant à l’IA de générer des notes médicales précises."
+      },
+      "step3": {
+        "title": "Révisez et affinez",
+        "description": "Personnalisez votre documentation en toute simplicité. Staptis analyse également les notes pour extraire les codes SNOMED CT pertinents et traduit le jargon médical en langage accessible aux patients."
+      },
+      "step4": {
+        "title": "Livrez et intégrez",
+        "description": "Générez des rapports finalisés comme lettres de consultation, références ou certificats, prêts à être partagés ou intégrés à votre dossier médical électronique."
+      }
+    },
+    "audience": {
+      "title": "Pour qui",
+      "gps": "Médecins généralistes",
+      "specialists": "Spécialistes médicaux",
+      "clinics": "Cliniques & petites structures"
+    }
   }
 }

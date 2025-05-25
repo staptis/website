@@ -21,5 +21,56 @@
     "send_message": "Send Us Your Message",
     "message_sent": "Your message has been sent successfully!",
     "error_sending_message": "There was an error sending your message. Please try again."
+  },
+  "cta": {
+    "demo": "Request a Demo",
+    "contact_us": "Contact Us"
+  },
+  "homepage": {
+    "hero": {
+      "title": "Spend Less Time on Paperwork. More Time With Patients.",
+      "subtitle": "Staptis turns your consultation recordings into structured, editable medical reports — securely and instantly."
+    },
+    "problem": {
+      "title": "Still spending hours writing reports after every consultation?",
+      "description": "Staptis lets you focus on patients while we handle the paperwork — accurately and automatically.",
+      "bullet1": {
+        "title": "Free yourself from administrative overhead",
+        "description": "Stop losing time on repetitive documentation. Free your evenings and improve your workflow."
+      },
+      "bullet2": {
+        "title": "Get structured reports instantly",
+        "description": "We turn consultation audio into clean, editable reports — ready for your EMR."
+      },
+      "bullet3": {
+        "title": "Reduce cognitive load & burnout",
+        "description": "Stay present with your patients. Let us handle the admin so you don’t have to."
+      }
+    },
+    "how_it_works": {
+      "title": "How It Works",
+      "step1": {
+        "title": "Choose Your Template",
+        "description": "Explore a curated selection of medical templates tailored to various specialties and cases."
+      },
+      "step2": {
+        "title": "Add Medical Context",
+        "description": "Capture patient details seamlessly—either through live consultation transcription or manual entry—empowering AI to generate accurate medical notes."
+      },
+      "step3": {
+        "title": "Review & Refine",
+        "description": "Customize your documentation effortlessly. Staptis also analyzes notes to extract relevant SNOMED CT codes and translates medical jargon into patient-friendly language for clearer communication."
+      },
+      "step4": {
+        "title": "Deliver & Integrate",
+        "description": "Generate finalized reports such as consultation letters, referrals, or certificates, ready to share or integrate with your electronic health records."
+      }
+    },
+    "audience": {
+      "title": "Who It’s For",
+      "gps": "General practitioners",
+      "specialists": "Medical specialists",
+      "clinics": "Clinics & small practices"
+    }
   }
 }

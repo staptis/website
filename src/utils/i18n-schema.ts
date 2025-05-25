@@ -24,6 +24,57 @@ export const TranslationSchema = z.object({
     message_sent: z.string(),
     error_sending_message: z.string(),
   }),
+  cta: z.object({
+    demo: z.string(),
+    contact_us: z.string(),
+  }),
+  homepage: z.object({
+    hero: z.object({
+      title: z.string(),
+      subtitle: z.string(),
+    }),
+    problem: z.object({
+      title: z.string(),
+      description: z.string(),
+      bullet1: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      bullet2: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      bullet3: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+    }),
+    how_it_works: z.object({
+      title: z.string(),
+      step1: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      step2: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      step3: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      step4: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+    }),
+    audience: z.object({
+      title: z.string(),
+      gps: z.string(),
+      specialists: z.string(),
+      clinics: z.string(),
+    }),
+  }),
 });
 
 export type Translation = z.infer<typeof TranslationSchema>;

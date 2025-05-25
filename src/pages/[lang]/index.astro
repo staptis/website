@@ -1,8 +1,15 @@
 ---
 import Layout from "@/components/templates/Layout.astro";
 import Section from "@/components/organisms/Section.astro";
+import Button from "@/components/atoms/Button.astro";
+import { Image } from "astro:assets";
 
 import { LANGUAGES, getLangFromPath, t } from "@/utils/i18n";
+
+import papers from "@/assets/papers.svg";
+import file from "@/assets/file.svg";
+import bookHeart from "@/assets/book_heart.svg";
+import sampleApp from "@/assets/sample_app.webp";
 
 export function getStaticPaths() {
   return LANGUAGES.map((locale) => ({
@@ -14,5 +21,259 @@ const lang = getLangFromPath(Astro.url.pathname);
 ---
 
 <Layout>
-  <Section first>{t(lang, "navigation.home")}</Section>
+  <!-- Hero Section -->
+  <Section first class="flex flex-col items-center gap-4 text-center">
+    <div>
+      <h1 class="text-6xl leading-tight font-extrabold">
+        {t(lang, "homepage.hero.title")}
+      </h1>
+      <p class="text-xl text-gray-700">
+        {t(lang, "homepage.hero.subtitle")}
+      </p>
+    </div>
+    <a href="#demo">
+      <Button>{t(lang, "cta.demo")}</Button>
+    </a>
+  </Section>
+
+  <!-- Problem & Value Section -->
+  <Section variant="mediumDark" class="flex flex-col items-center">
+    <h2 class="text-4xl font-semibold tracking-tight">
+      {t(lang, "homepage.problem.title")}
+    </h2>
+    <p class="text-lg">
+      {t(lang, "homepage.problem.description")}
+    </p>
+
+    <div class="mt-6 grid gap-8 text-left sm:grid-cols-2 md:grid-cols-3">
+      <div class="space-y-2">
+        <div class="text-primary">
+          <!-- Admin burden icon -->
+          <img src={papers.src} alt="papers" width="16" height="16" />
+        </div>
+        <h3 class="text-lg font-medium">
+          {t(lang, "homepage.problem.bullet1.title")}
+        </h3>
+        <p class="text-sm">
+          {t(lang, "homepage.problem.bullet1.description")}
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <div class="text-primary">
+          <!-- Efficiency icon -->
+          <img src={file.src} alt="papers" width="16" height="16" />
+        </div>
+        <h3 class="text-lg font-medium">
+          {t(lang, "homepage.problem.bullet2.title")}
+        </h3>
+        <p class="text-sm">
+          {t(lang, "homepage.problem.bullet2.description")}
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <div class="text-primary">
+          <!-- Burnout icon -->
+          <img src={bookHeart.src} alt="papers" width="16" height="16" />
+        </div>
+        <h3 class="text-lg font-medium">
+          {t(lang, "homepage.problem.bullet3.title")}
+        </h3>
+        <p class="text-sm">
+          {t(lang, "homepage.problem.bullet3.description")}
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- How It Works -->
+  <Section class="flex flex-col items-center gap-2">
+    <h2 class="text-4xl font-semibold tracking-tight">
+      {t(lang, "homepage.how_it_works.title")}
+    </h2>
+
+    {/* Step 1 */}
+    <div
+      class="mt-6 flex w-full flex-col items-center gap-2 md:flex-row md:justify-between"
+    >
+      <div class="flex-1 text-left">
+        <div class="flex items-center gap-2">
+          <span class="text-primary text-4xl font-extrabold">1</span>
+          <h3 class="text-xl font-semibold">
+            {t(lang, "homepage.how_it_works.step1.title")}
+          </h3>
+        </div>
+        <p class="text-gray-600">
+          {t(lang, "homepage.how_it_works.step1.description")}
+        </p>
+      </div>
+      <div>
+        <Image
+          src={sampleApp}
+          alt={t(lang, "homepage.how_it_works.step1.title")}
+          class="rounded-lg shadow-md"
+          loading="lazy"
+          width={300}
+          height={250}
+        />
+      </div>
+    </div>
+
+    {/* Step 2 */}
+    <div
+      class="flex w-full flex-col items-center gap-2 md:flex-row md:justify-between"
+    >
+      <div class="flex-1 text-left">
+        <div class="flex items-center gap-2">
+          <span class="text-primary text-4xl font-extrabold">2</span>
+          <h3 class="text-xl font-semibold">
+            {t(lang, "homepage.how_it_works.step2.title")}
+          </h3>
+        </div>
+        <p class="text-gray-600">
+          {t(lang, "homepage.how_it_works.step2.description")}
+        </p>
+      </div>
+      <div>
+        <Image
+          src={sampleApp}
+          alt={t(lang, "homepage.how_it_works.step2.title")}
+          class="rounded-lg shadow-md"
+          loading="lazy"
+          width={300}
+          height={250}
+        />
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div
+      class="flex w-full flex-col items-center gap-2 md:flex-row md:justify-between"
+    >
+      <div class="flex-1 text-left">
+        <div class="flex items-center gap-2">
+          <span class="text-primary text-4xl font-extrabold">3</span>
+          <h3 class="text-xl font-semibold">
+            {t(lang, "homepage.how_it_works.step3.title")}
+          </h3>
+        </div>
+        <p class="text-gray-600">
+          {t(lang, "homepage.how_it_works.step3.description")}
+        </p>
+      </div>
+      <div>
+        <Image
+          src={sampleApp}
+          alt={t(lang, "homepage.how_it_works.step3.title")}
+          class="rounded-lg shadow-md"
+          loading="lazy"
+          width={300}
+          height={250}
+        />
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div
+      class="flex w-full flex-col items-center gap-2 md:flex-row md:justify-between"
+    >
+      <div class="flex-1 text-left">
+        <div class="flex items-center gap-2">
+          <span class="text-primary text-4xl font-extrabold">4</span>
+          <h3 class="text-xl font-semibold">
+            {t(lang, "homepage.how_it_works.step4.title")}
+          </h3>
+        </div>
+        <p class="text-gray-600">
+          {t(lang, "homepage.how_it_works.step4.description")}
+        </p>
+      </div>
+      <div>
+        <Image
+          src={sampleApp}
+          alt={t(lang, "homepage.how_it_works.step4.title")}
+          class="rounded-lg shadow-md"
+          loading="lazy"
+          width={300}
+          height={250}
+        />
+      </div>
+    </div>
+  </Section>
+
+  <!-- Audience -->
+  <Section
+    variant="mediumDark"
+    class="flex w-full flex-col items-center gap-2 text-center"
+  >
+    <h2 class="text-4xl font-semibold tracking-tight text-gray-900">
+      {t(lang, "homepage.audience.title")}
+    </h2>
+    <ul class="mt-6 space-y-6">
+      <li class="flex items-center space-x-4">
+        <svg
+          class="text-primary h-6 w-6 flex-shrink-0"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+          <path
+            d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.75 12.083 12.083 0 015.84 10.578L12 14z"
+          ></path>
+        </svg>
+        <span class="text-lg font-medium text-gray-800"
+          >{t(lang, "homepage.audience.gps")}</span
+        >
+      </li>
+      <li class="flex items-center space-x-4">
+        <svg
+          class="text-primary h-6 w-6 flex-shrink-0"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="7" r="4"></circle>
+          <path d="M5.5 21h13a2 2 0 002-2v-2a5 5 0 00-10 0v2a2 2 0 002 2z"
+          ></path>
+        </svg>
+        <span class="text-lg font-medium text-gray-800"
+          >{t(lang, "homepage.audience.specialists")}</span
+        >
+      </li>
+      <li class="flex items-center space-x-4">
+        <svg
+          class="text-primary h-6 w-6 flex-shrink-0"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 3v4M8 3v4"></path>
+          <path d="M2 11h20"></path>
+        </svg>
+        <span class="text-lg font-medium text-gray-800"
+          >{t(lang, "homepage.audience.clinics")}</span
+        >
+      </li>
+    </ul>
+    <a href="#demo" class="mt-4">
+      <Button>
+        {t(lang, "cta.demo")}
+      </Button>
+    </a>
+  </Section>
 </Layout>

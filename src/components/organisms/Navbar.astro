@@ -55,7 +55,16 @@ const lang = getLangFromPath(Astro.url.pathname);
         </Button>
       </menu-button>
     </div>
-    <LanguagePicker />
+    <div class="flex items-center gap-1">
+      <a
+        href="https://app.staptis.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button>Login</Button>
+      </a>
+      <LanguagePicker />
+    </div>
   </div>
 
   <!-- Mobile Navigation -->

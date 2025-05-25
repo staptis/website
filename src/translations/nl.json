@@ -1,10 +1,10 @@
 {
   "site": {
-    "title": "Staptis – AI-gestuurde Automatisering van Medische Rapporten met SNOMED CT Integratie",
-    "description": "Staptis transformeert gesprekken tussen arts en patiënt naar gestructureerde medische rapporten met behulp van AI-transcriptie en SNOMED CT-codering. Zorg voor snellere documentatie, naleving en hogere nauwkeurigheid – alles in één gestroomlijnd hulpmiddel."
+    "title": "Staptis – AI-gestuurde medische rapportautomatisering met SNOMED CT-integratie",
+    "description": "Staptis zet dokter-patiëntgesprekken om in gestructureerde medische rapporten met behulp van AI-transcriptie en SNOMED CT-codering. Zorg voor snellere documentatie, naleving en hogere nauwkeurigheid – allemaal in één gebruiksvriendelijk systeem."
   },
   "navigation": {
-    "home": "Startpagina",
+    "home": "Home",
     "about": "Over ons",
     "contact": "Contact"
   },
@@ -14,12 +14,63 @@
     "all_rights_reserved": "Alle rechten voorbehouden."
   },
   "contact": {
-    "get_in_touch": "Interesse in een demo of heb je vragen over ons platform? We horen graag van je. Vul het formulier in en ons team neemt snel contact met je op.",
+    "get_in_touch": "Geïnteresseerd in een demo of vragen over ons platform? We horen graag van u. Vul het formulier in en ons team neemt snel contact met u op.",
     "name": "Naam",
     "email": "E-mail",
     "company_name": "Bedrijfsnaam",
-    "send_message": "Stuur ons je bericht",
-    "message_sent": "Je bericht is succesvol verzonden!",
-    "error_sending_message": "Er is een fout opgetreden bij het verzenden van je bericht. Probeer het opnieuw."
+    "send_message": "Stuur uw bericht",
+    "message_sent": "Uw bericht is succesvol verzonden!",
+    "error_sending_message": "Er is een fout opgetreden bij het verzenden van uw bericht. Probeer het alstublieft opnieuw."
+  },
+  "cta": {
+    "demo": "Vraag een demo aan",
+    "contact_us": "Contacteer ons"
+  },
+  "homepage": {
+    "hero": {
+      "title": "Besteed minder tijd aan administratie. Meer tijd voor uw patiënten.",
+      "subtitle": "Staptis zet uw consultatie-opnames om in gestructureerde, bewerkbare medische rapporten — veilig en direct."
+    },
+    "problem": {
+      "title": "Besteedt u nog steeds uren aan rapporten na elke consultatie?",
+      "description": "Staptis laat u focussen op uw patiënten terwijl wij de administratie nauwkeurig en automatisch afhandelen.",
+      "bullet1": {
+        "title": "Bevrijd uzelf van administratieve rompslomp",
+        "description": "Stop met tijdverlies aan repetitieve documentatie. Win tijd terug en verbeter uw workflow."
+      },
+      "bullet2": {
+        "title": "Ontvang direct gestructureerde rapporten",
+        "description": "Wij zetten consultatie-audio om in heldere, bewerkbare rapporten — klaar voor uw EPD."
+      },
+      "bullet3": {
+        "title": "Verminder cognitieve belasting en burn-out",
+        "description": "Blijf aanwezig voor uw patiënten. Laat ons de administratie verzorgen."
+      }
+    },
+    "how_it_works": {
+      "title": "Hoe het werkt",
+      "step1": {
+        "title": "Kies uw sjabloon",
+        "description": "Ontdek een zorgvuldig geselecteerde reeks medische sjablonen afgestemd op diverse specialismen en casussen."
+      },
+      "step2": {
+        "title": "Voeg medische context toe",
+        "description": "Leg patiëntgegevens moeiteloos vast — via live transcriptie tijdens consultaties of handmatige invoer — zodat AI nauwkeurige medische notities kan genereren."
+      },
+      "step3": {
+        "title": "Bekijk en verfijn",
+        "description": "Pas uw documentatie eenvoudig aan. Staptis analyseert notities om relevante SNOMED CT-codes te extraheren en vertaalt medische termen naar patiëntvriendelijke taal voor duidelijke communicatie."
+      },
+      "step4": {
+        "title": "Lever en integreer",
+        "description": "Genereer definitieve rapporten zoals consultatiebrieven, verwijzingen of attesten, klaar om te delen of te integreren met uw elektronisch patiëntendossier."
+      }
+    },
+    "audience": {
+      "title": "Voor wie is het bedoeld",
+      "gps": "Huisartsen",
+      "specialists": "Medische specialisten",
+      "clinics": "Klinieken & kleine praktijken"
+    }
   }
 }

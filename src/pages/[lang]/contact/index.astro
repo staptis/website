@@ -16,24 +16,22 @@ const lang = getLangFromPath(Astro.url.pathname);
 ---
 
 <Layout>
-  <Section first>
-    <div class="flex gap-2 rounded-md border border-gray-100 bg-gray-100 p-6">
-      <h1 class="flex-1 text-2xl sm:text-3xl md:text-4xl">
-        {t(lang, "contact.get_in_touch")}
-      </h1>
-      <form
-        class="flex flex-1 flex-col gap-4"
-        method="POST"
-        action={`/api/form-contact?lang=${lang}`}
-      >
-        <Label required>{t(lang, "contact.name")}</Label>
-        <Input name="name" required />
-        <Label required>{t(lang, "contact.email")}</Label>
-        <Input type="email" name="email" required />
-        <Label>{t(lang, "contact.company_name")}</Label>
-        <Input name="companyName" />
-        <Button type="submit">{t(lang, "contact.send_message")}</Button>
-      </form>
-    </div>
+  <Section first class="flex gap-2">
+    <h1 class="flex-1 text-2xl sm:text-3xl md:text-4xl">
+      {t(lang, "contact.get_in_touch")}
+    </h1>
+    <form
+      class="flex flex-1 flex-col gap-4"
+      method="POST"
+      action={`/api/form-contact?lang=${lang}`}
+    >
+      <Label required>{t(lang, "contact.name")}</Label>
+      <Input name="name" required />
+      <Label required>{t(lang, "contact.email")}</Label>
+      <Input type="email" name="email" required />
+      <Label>{t(lang, "contact.company_name")}</Label>
+      <Input name="companyName" />
+      <Button type="submit">{t(lang, "contact.send_message")}</Button>
+    </form>
   </Section>
 </Layout>
