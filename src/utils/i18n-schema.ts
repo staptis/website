@@ -77,6 +77,37 @@ export const TranslationSchema = z.object({
       clinics: z.string(),
     }),
   }),
+  about: z.object({
+    vision: z.object({
+      title: z.string(),
+      description: z.string(),
+    }),
+    culture: z.object({
+      title: z.string(),
+      description: z.string(),
+      kindness: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      ownership: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      excellence: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      pragmatism: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+    }),
+    team: z.object({
+      title: z.string(),
+      product_engineering_role: z.string(),
+      gynecologist_role: z.string(),
+    }),
+  }),
 });
 
 export type Translation = z.infer<typeof TranslationSchema>;

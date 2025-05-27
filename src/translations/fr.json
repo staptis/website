@@ -74,5 +74,38 @@
       "specialists": "Spécialistes médicaux",
       "clinics": "Cliniques & petites structures"
     }
+  },
+  "about": {
+    "vision": {
+      "title": "Notre mission",
+      "description": "Chez Staptis, nous croyons que la technologie peut réduire considérablement la charge administrative des professionnels de santé. Notre mission est d’aider les médecins à documenter leurs consultations de manière plus rapide et fiable."
+    },
+    "culture": {
+      "title": "Notre culture",
+      "description": "Nous sommes une petite équipe passionnée, animée par des valeurs humaines fortes, une exigence de qualité, et une approche autonome du travail.",
+      "values": {
+        "kindness": {
+          "title": "Bienveillance",
+          "description": "Nous interagissons avec empathie, respect et attention sincère envers nos utilisateurs et nos collègues."
+        },
+        "ownership": {
+          "title": "Responsabilité",
+          "description": "Nous prenons des initiatives et nous nous engageons pleinement dans notre travail."
+        },
+        "excellence": {
+          "title": "Excellence",
+          "description": "Nous visons un travail de qualité optimale tout en restant réalistes."
+        },
+        "pragmatism": {
+          "title": "Pragmatisme",
+          "description": "Nous gardons les choses simples et nous concentrons sur ce qui fonctionne vraiment et crée de la valeur."
+        }
+      }
+    },
+    "team": {
+      "title": "Rencontrez l’équipe",
+      "gynecologist_role": "Gynécologue",
+      "product_engineering_role": "Ingénieur produit"
+    }
   }
 }

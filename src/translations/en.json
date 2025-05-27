@@ -74,5 +74,36 @@
       "specialists": "Medical specialists",
       "clinics": "Clinics & small practices"
     }
+  },
+  "about": {
+    "vision": {
+      "title": "Our Mission & Vision",
+      "description": "At Staptis, we believe in using technology to return time to healthcare providers and improve clarity for patients. Our goal is to make clinical documentation effortless, accurate, and accessible."
+    },
+    "culture": {
+      "title": "Our Culture",
+      "description": "We’re driven by purpose and grounded in values that help us build for the long term.",
+      "kindness": {
+        "title": "Kindness",
+        "description": "We communicate with empathy, assume positive intent, and treat everyone with respect—inside and outside our company."
+      },
+      "ownership": {
+        "title": "Ownership",
+        "description": "We take responsibility, follow through, and act as stewards of our product and our users' trust."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We pursue high standards in everything we do, from code to care, always striving to improve."
+      },
+      "pragmatism": {
+        "title": "Pragmatism",
+        "description": "We seek simple, practical solutions to real-world problems without overengineering."
+      }
+    },
+    "team": {
+      "title": "Meet the Team",
+      "gynecologist_role": "Gynecologist",
+      "product_engineering_role": "Product Engineer"
+    }
   }
 }

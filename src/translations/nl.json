@@ -74,5 +74,38 @@
       "specialists": "Medische specialisten",
       "clinics": "Klinieken & kleine praktijken"
     }
+  },
+  "about": {
+    "vision": {
+      "title": "Onze missie",
+      "description": "Bij Staptis geloven we dat technologie de werkdruk van zorgverleners drastisch kan verlagen. Ons doel is om artsen te ondersteunen bij het documenteren van consultaties zodat zij meer tijd kunnen besteden aan hun patiënten."
+    },
+    "culture": {
+      "title": "Onze cultuur",
+      "description": "We zijn een klein, gepassioneerd team dat gelooft in een gezonde werkcultuur waar kwaliteit, autonomie en menselijkheid centraal staan.",
+      "values": {
+        "kindness": {
+          "title": "Vriendelijkheid",
+          "description": "We benaderen elkaar en onze gebruikers met empathie, respect en oprechte zorg."
+        },
+        "ownership": {
+          "title": "Eigenaarschap",
+          "description": "We nemen initiatief en voelen ons verantwoordelijk voor ons werk en de impact ervan."
+        },
+        "excellence": {
+          "title": "Uitmuntendheid",
+          "description": "We streven ernaar om het beste werk te leveren binnen realistische grenzen."
+        },
+        "pragmatism": {
+          "title": "Pragmatisme",
+          "description": "We houden het simpel en focussen op wat echt werkt en waarde oplevert."
+        }
+      }
+    },
+    "team": {
+      "title": "Ontmoet het team",
+      "gynecologist_role": "Gynaecoloog",
+      "product_engineering_role": "Productingenieur"
+    }
   }
 }

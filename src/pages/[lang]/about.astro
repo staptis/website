@@ -1,8 +1,14 @@
 ---
-import Layout from "@/components/templates/Layout.astro";
-import Section from "@/components/organisms/Section.astro";
+import { Image } from "astro:assets";
 
-import { LANGUAGES, getLangFromPath, t } from "@/utils/i18n";
+import Section from "@/components/organisms/Section.astro";
+import Layout from "@/components/templates/Layout.astro";
+
+import { getLangFromPath, LANGUAGES, t } from "@/utils/i18n";
+
+import TeamPhoto from "@/assets/team.jpg";
+import JonathanPhoto from "@/assets/jonathan.jpg";
+import JoelPhoto from "@/assets/joel.jpg";
 
 export function getStaticPaths() {
   return LANGUAGES.map((locale) => ({
@@ -13,6 +19,94 @@ export function getStaticPaths() {
 const lang = getLangFromPath(Astro.url.pathname);
 ---
 
-<Layout seo={{ title: t(lang, "pages.about") + " - Staptis" }}>
-  <Section first>{t(lang, "pages.about")}</Section>
+<Layout seo={{ title: "About – Staptis" }}>
+  <Section first>
+    <div
+      class="flex flex-col flex-nowrap items-center justify-center gap-6 text-center lg:flex-row"
+    >
+      <Image src={TeamPhoto} alt="Staptis Team" />
+      <div class="flex flex-col gap-8">
+        <h1 class="text-4xl font-semibold tracking-tight">
+          {t(lang, "about.vision.title")}
+        </h1>
+        <p class="text-lg text-gray-700">
+          {t(lang, "about.vision.description")}
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="flex flex-col items-center gap-8 text-center">
+      <h2 class="text-3xl font-semibold">{t(lang, "about.culture.title")}</h2>
+      <p class="text-gray-700">{t(lang, "about.culture.description")}</p>
+
+      <div
+        class="flex flex-col flex-nowrap justify-center gap-6 text-left md:flex-row md:flex-wrap"
+      >
+        <div class="flex-1">
+          <h3 class="text-primary text-xl font-semibold">
+            {t(lang, "about.culture.kindness.title")}
+          </h3>
+          <p class="text-gray-600">
+            {t(lang, "about.culture.kindness.description")}
+          </p>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-primary text-xl font-semibold">
+            {t(lang, "about.culture.ownership.title")}
+          </h3>
+          <p class="text-gray-600">
+            {t(lang, "about.culture.ownership.description")}
+          </p>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-primary text-xl font-semibold">
+            {t(lang, "about.culture.excellence.title")}
+          </h3>
+          <p class="text-gray-600">
+            {t(lang, "about.culture.excellence.description")}
+          </p>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-primary text-xl font-semibold">
+            {t(lang, "about.culture.pragmatism.title")}
+          </h3>
+          <p class="text-gray-600">
+            {t(lang, "about.culture.pragmatism.description")}
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="flex flex-col items-center gap-8 text-center">
+      <h2 class="text-3xl font-semibold">{t(lang, "about.team.title")}</h2>
+      <div class="flex flex-col items-center justify-center gap-10 md:flex-row">
+        <div class="flex flex-col items-center gap-2 text-center">
+          <img
+            src={JonathanPhoto.src}
+            alt="Jonathan Bongima"
+            class="h-40 w-40 rounded-full object-cover shadow"
+          />
+          <div class="font-semibold">Jonathan Bongima</div>
+          <div class="text-gray-600">
+            {t(lang, "about.team.gynecologist_role")}
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-2 text-center">
+          <img
+            src={JoelPhoto.src}
+            alt="Joel Bongima"
+            class="h-40 w-40 rounded-full object-cover shadow"
+          />
+          <div class="font-semibold">Joel Bongima</div>
+          <div class="text-gray-600">
+            {t(lang, "about.team.product_engineering_role")}
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
 </Layout>
