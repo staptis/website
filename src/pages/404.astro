@@ -1,5 +1,20 @@
 ---
+import Button from "@/components/atoms/Button.astro";
+import Section from "@/components/organisms/Section.astro";
 import Layout from "@/components/templates/Layout.astro";
 ---
 
-<Layout>404 Error</Layout>
+<Layout seo={{ title: "404 - Staptis" }}>
+  <Section
+    first
+    class="flex min-h-[60vh] flex-col items-center justify-center gap-6 text-center"
+  >
+    <h1 class="text-primary text-5xl font-bold tracking-tight">404</h1>
+    <p class="max-w-prose text-xl font-medium text-gray-600">
+      Sorry, the page you’re looking for doesn’t exist.
+    </p>
+    <a href="/" class="inline-block">
+      <Button variant="primary">Go to homepage</Button>
+    </a>
+  </Section>
+</Layout>
