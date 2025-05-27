@@ -5,10 +5,12 @@ export const TranslationSchema = z.object({
     title: z.string(),
     description: z.string(),
   }),
-  navigation: z.object({
+  pages: z.object({
     home: z.string(),
     about: z.string(),
     contact: z.string(),
+    contact_success: z.string(),
+    contact_error: z.string(),
   }),
   footer: z.object({
     privacy_policy: z.string(),

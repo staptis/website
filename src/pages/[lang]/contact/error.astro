@@ -13,6 +13,6 @@ export function getStaticPaths() {
 const lang = getLangFromPath(Astro.url.pathname);
 ---
 
-<Layout>
+<Layout seo={{ title: t(lang, "pages.contact_error") + " - Staptis" }}>
   <Section first>{t(lang, "contact.error_sending_message")}</Section>
 </Layout>

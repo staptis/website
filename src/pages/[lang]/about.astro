@@ -13,6 +13,6 @@ export function getStaticPaths() {
 const lang = getLangFromPath(Astro.url.pathname);
 ---
 
-<Layout>
-  <Section first>{t(lang, "navigation.about")}</Section>
+<Layout seo={{ title: t(lang, "pages.about") + " - Staptis" }}>
+  <Section first>{t(lang, "pages.about")}</Section>
 </Layout>
