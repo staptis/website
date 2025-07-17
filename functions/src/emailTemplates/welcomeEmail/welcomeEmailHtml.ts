@@ -1,8 +1,8 @@
-const welcomeEmailEnglish = `<!doctype html>
+export default `<!doctype html>
 <html lang="und" dir="auto" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-  <title>Thanks for contacting us</title>
+  <title>{{title}}</title>
   <!--[if !mso]><!-->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!--<![endif]-->
@@ -90,7 +90,7 @@ const welcomeEmailEnglish = `<!doctype html>
 </head>
 
 <body style="word-spacing:normal;background-color:#f9f9f9;">
-  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">We’ll be in touch soon</div>
+  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">{{subTitle}}</div>
   <div style="background-color:#f9f9f9;" lang="und" dir="auto">
     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
     <div style="margin:0px auto;max-width:600px;">
@@ -109,12 +109,15 @@ const welcomeEmailEnglish = `<!doctype html>
                     </tr>
                     <tr>
                       <td align="left" class="body-text" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">Thanks for reaching out to us at Staptis. We’ve received your message and we’ll get back to you as soon as possible.</div>
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">
+
+                          {{body}}
+                        </div>
                       </td>
                     </tr>
                     <tr>
                       <td align="left" class="body-text" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">If it’s urgent, feel free to reply directly to this email.</div>
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">{{subBody}}</div>
                       </td>
                     </tr>
                     <tr>
@@ -127,7 +130,7 @@ const welcomeEmailEnglish = `<!doctype html>
                     </tr>
                     <tr>
                       <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:left;color:#888888;">— The Staptis Team</div>
+                        <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;line-height:1;text-align:left;color:#888888;">— {{footer}}</div>
                       </td>
                     </tr>
                   </tbody>
@@ -144,5 +147,3 @@ const welcomeEmailEnglish = `<!doctype html>
 </body>
 
 </html>`;
-
-export default welcomeEmailEnglish;

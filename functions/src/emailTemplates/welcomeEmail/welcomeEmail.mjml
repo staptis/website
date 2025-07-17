@@ -1,22 +1,17 @@
 <mjml>
   <mj-head>
-    <mj-title>Thanks for contacting us</mj-title>
-    <mj-preview>We’ll be in touch soon</mj-preview>
+    <mj-title>{{title}}</mj-title>
+    <mj-preview>{{subTitle}}</mj-preview>
     <mj-style> .body-text { font-size: 16px; color: #333; } </mj-style>
   </mj-head>
   <mj-body background-color="#f9f9f9">
     <mj-section>
       <mj-column>
         <mj-text font-size="20px" font-weight="bold">Hi {{name}},</mj-text>
-        <mj-text css-class="body-text">
-          Thanks for reaching out to us at Staptis. We’ve received your message
-          and we’ll get back to you as soon as possible.
-        </mj-text>
-        <mj-text css-class="body-text">
-          If it’s urgent, feel free to reply directly to this email.
-        </mj-text>
+        <mj-text css-class="body-text"> {{body}} </mj-text>
+        <mj-text css-class="body-text"> {{subBody}} </mj-text>
         <mj-divider border-color="#cccccc" />
-        <mj-text font-size="14px" color="#888"> — The Staptis Team </mj-text>
+        <mj-text font-size="14px" color="#888"> — {{footer}} </mj-text>
       </mj-column>
     </mj-section>
   </mj-body>
