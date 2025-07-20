@@ -1,14 +1,27 @@
 #!/bin/bash
+set -euo pipefail
 
 # Load required environment variables
 CF_API_TOKEN="${CLOUDFLARE_API_TOKEN}"
 PROJECT_NAME="${CLOUDFLARE_PROJECT_NAME}"
 ACCOUNT_ID="${CLOUDFLARE_ACCOUNT_ID}"
 
+echo "🔍 Using environment:"
+echo "  CF_API_TOKEN: ${#CF_API_TOKEN} characters"
+echo "  PROJECT_NAME: $PROJECT_NAME"
+echo "  ACCOUNT_ID: $ACCOUNT_ID"
+
 # Check if all required env vars are set
-if [[ -z "$CF_API_TOKEN" || -z "$PROJECT_NAME" || -z "$ACCOUNT_ID" ]]; then
-  echo "❌ Error: Missing required environment variables:"
-  echo "  CLOUDFLARE_API_TOKEN, CLOUDFLARE_PROJECT_NAME, CLOUDFLARE_ACCOUNT_ID"
+if [[ -z "$CF_API_TOKEN" ]]; then
+  echo "❌ Error: Missing required environment variables CLOUDFLARE_API_TOKEN"
+  exit 1
+fi
+if [[ -z "$PROJECT_NAME"  ]]; then
+  echo "❌ Error: Missing required environment variables CLOUDFLARE_PROJECT_NAME"
+  exit 1
+fi
+if [[ -z "$ACCOUNT_ID" ]]; then
+  echo "❌ Error: Missing required environment variables CLOUDFLARE_ACCOUNT_ID"
   exit 1
 fi
 
