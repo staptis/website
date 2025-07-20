@@ -16,7 +16,7 @@ const lang = getLangFromPath(Astro.url.pathname);
 ---
 
 <Layout seo={{ title: t(lang, "pages.contact") + " - Staptis" }}>
-  <Section first class="flex gap-2">
+  <Section first class="flex flex-col gap-2 md:flex-row">
     <h1 class="flex-1 text-2xl sm:text-3xl md:text-4xl">
       {t(lang, "contact.get_in_touch")}
     </h1>
