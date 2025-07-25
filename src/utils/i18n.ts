@@ -10,8 +10,8 @@ type Language = (typeof LANGUAGES)[number];
 const en = TranslationSchema.parse(enRaw);
 
 // ❗ No schema check for other languages
-const nl = nlRaw as Partial<Translation>;
-const fr = frRaw as Partial<Translation>;
+const nl = nlRaw as unknown as Partial<Translation>;
+const fr = frRaw as unknown as Partial<Translation>;
 
 const translations: Record<Language, Partial<Translation>> = {
   en,
