@@ -62,7 +62,7 @@ jobs:
         id: build_cache
         with:
           path: dist
-          key: build-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('pnpm-lock.yaml', 'src/**/*', 'public/ **/*', 'functions/**/*', 'astro.config.mjs', 'wrangler.jsonc', 'tsconfig.json',) }}
+          key: build-${{ runner.os }}-${{ github.ref }}-${{ hashFiles('pnpm-lock.yaml', 'src/**/*', 'public/ **/*', 'functions/**/*', 'astro.config.mjs', 'wrangler.jsonc', 'tsconfig.json') }}
           restore-keys: ${{ runner.os }}-dist-website
       - if: steps.build_cache.outputs.cache-hit != 'true'
         env:
