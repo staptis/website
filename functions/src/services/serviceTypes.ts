@@ -7,7 +7,7 @@ export interface IFormContact {
 }
 
 export interface IStorageService {
-  storeContact(data: IFormContact): Promise<void>;
+  storeContact(data: IFormContact): Promise<boolean>;
 }
 
 export interface IEmailService {

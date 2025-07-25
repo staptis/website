@@ -7,6 +7,7 @@ import {
 } from "@/services/serviceTypes";
 import { Env, Language } from "@/types";
 import { ResendEmailService } from "@/services/emailService/resendEmailService";
+import { GoogleStorageService } from "./storageService/googleStorageService";
 
 export class Service {
   formStorageService: IStorageService;
@@ -18,6 +19,9 @@ export class Service {
     switch (env.STORAGE_SERVICE) {
       case "LOG":
         this.formStorageService = new LogStorageService();
+        break;
+      case "GOOGLE":
+        this.formStorageService = new GoogleStorageService(env);
         break;
       default:
         this.formStorageService = new LogStorageService();
@@ -36,8 +40,10 @@ export class Service {
 
   async handleFormSubmission(data: IFormContact): Promise<void> {
     try {
-      await this.formStorageService.storeContact(data);
-      await this.emailService.sendEmail(data, this.language);
+      const isStored = await this.formStorageService.storeContact(data);
+      if (isStored) {
+        await this.emailService.sendEmail(data, this.language);
+      }
     } catch (error) {
       console.error("Error handling form submission:", error);
       throw new Error("Failed to handle form submission");

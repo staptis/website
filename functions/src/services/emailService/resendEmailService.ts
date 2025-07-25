@@ -3,21 +3,22 @@ import welcomeEmail from "@/emailTemplates/welcomeEmail/welcomeEmailTemplate";
 import { Env, Language } from "@/types";
 
 export class ResendEmailService implements IEmailService {
-  apiKey: string;
+  #apiKey: string;
   constructor(env: Env) {
+    console.log("ResendEmailService initialized");
     if (!env.RESEND_API_KEY) {
       throw new Error("RESEND_API_KEY env is required");
     }
-    this.apiKey = env.RESEND_API_KEY as string;
+    this.#apiKey = env.RESEND_API_KEY;
   }
   async sendEmail(data: IFormContact, language: Language): Promise<void> {
-    const { name, email, companyName } = data;
+    const { name, email } = data;
 
     try {
       await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${this.apiKey}`,
+          Authorization: `Bearer ${this.#apiKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
