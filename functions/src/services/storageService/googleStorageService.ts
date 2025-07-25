@@ -10,16 +10,19 @@ export class GoogleStorageService implements IStorageService {
     console.log("GoogleStorageService initialized");
     if (
       !env.GOOGLE_CLIENT_EMAIL ||
-      !env.GOOGLE_PRIVATE_KEY ||
+      !env.GOOGLE_PRIVATE_KEY_BASE64 ||
       !env.GOOGLE_SHEET_ID ||
       !env.GOOGLE_SHEET_NAME
     ) {
       throw new Error(
-        "GOOGLE_CLIENT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SHEET_ID, and GOOGLE_SHEET_NAME envs are required",
+        "GOOGLE_CLIENT_EMAIL, GOOGLE_PRIVATE_KEY_BASE64, GOOGLE_SHEET_ID, and GOOGLE_SHEET_NAME envs are required",
       );
     }
     this.#clientEmail = env.GOOGLE_CLIENT_EMAIL;
-    this.#privateKey = env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
+    this.#privateKey = atob(env.GOOGLE_PRIVATE_KEY_BASE64).replace(
+      /\\n/g,
+      "\n",
+    );
     this.#sheetId = env.GOOGLE_SHEET_ID;
     this.#sheetName = env.GOOGLE_SHEET_NAME;
   }

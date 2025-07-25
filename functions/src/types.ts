@@ -5,7 +5,7 @@ export interface Env {
   STORAGE_SERVICE: "LOG" | "GOOGLE";
   RESEND_API_KEY: string;
   GOOGLE_CLIENT_EMAIL: string;
-  GOOGLE_PRIVATE_KEY: string;
+  GOOGLE_PRIVATE_KEY_BASE64: string;
   GOOGLE_SHEET_ID: string;
   GOOGLE_SHEET_NAME: string;
 }

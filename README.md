@@ -37,3 +37,4 @@
 ### Cloudflare configuration
 
 - add Resend and Google envs in Cloudfare for the page functions. See .dev.vars.template for all envs
+- add rate limiting for page functions api endpoint
