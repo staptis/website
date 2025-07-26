@@ -2,8 +2,6 @@
 
 ## TODOS
 
-[] recaptcha for contact from
-[] add two columns for leads googl sheeth date added and email sent boolean
 [] add the screenshots for the steps in home page
 [] add screen recording for hero sections
 [] setup the privacy policy and terms of service

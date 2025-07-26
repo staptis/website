@@ -42,7 +42,17 @@ export class GoogleStorageService implements IStorageService {
       return;
     }
 
-    await this.#appendRow([email, name, companyName, language], token);
+    await this.#appendRow(
+      [
+        email,
+        name,
+        companyName,
+        language,
+        new Date().toISOString(),
+        "contact form website",
+      ],
+      token,
+    );
   }
   async #getAccessToken(): Promise<string> {
     const jwt = await this.#createJWT(
