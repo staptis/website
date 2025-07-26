@@ -5,6 +5,7 @@ import Label from "@/components/atoms/Label.astro";
 import Section from "@/components/organisms/Section.astro";
 import Layout from "@/components/templates/Layout.astro";
 import { LANGUAGES, getLangFromPath, t } from "@/utils/i18n";
+import { PUBLIC_TURNSTILE_SITE_KEY } from "astro:env/client";
 
 export function getStaticPaths() {
   return LANGUAGES.map((locale) => ({
@@ -31,7 +32,24 @@ const lang = getLangFromPath(Astro.url.pathname);
       <Input type="email" name="email" required />
       <Label>{t(lang, "contact.company_name")}</Label>
       <Input name="companyName" />
+
+      <!-- Turnstile CAPTCHA -->
+      <div
+        class="cf-turnstile"
+        data-sitekey={PUBLIC_TURNSTILE_SITE_KEY}
+        data-theme="light"
+        data-language={lang}
+      >
+      </div>
+
+      <!-- Submit Button -->
       <Button type="submit">{t(lang, "contact.send_message")}</Button>
     </form>
   </Section>
 </Layout>
+
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+  is:inline></script>

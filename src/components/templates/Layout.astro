@@ -9,7 +9,7 @@ import "@/styles/global.css";
 
 import Footer from "@/components/organisms/Footer.astro";
 import Navbar from "@/components/organisms/Navbar.astro";
-import { env } from "@/env";
+import { PUBLIC_URL } from "astro:env/client";
 
 interface Props {
   seo?: SEOProps;
@@ -20,7 +20,6 @@ const { seo } = Astro.props;
 const lang = getLangFromPath(Astro.url.pathname);
 const title = t(lang, "site.title");
 const description = t(lang, "site.description");
-const url = env.PUBLIC_URL;
 const ogImage = "/logo.png";
 ---
 
@@ -36,7 +35,7 @@ const ogImage = "/logo.png";
           title: title,
           type: "website",
           image: ogImage,
-          url,
+          url: PUBLIC_URL,
         },
         optional: {
           description,

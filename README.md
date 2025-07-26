@@ -3,6 +3,14 @@
 ## TODOS
 
 [] recaptcha for contact from
+[] add two columns for leads googl sheeth date added and email sent boolean
+[] add the screenshots for the steps in home page
+[] add screen recording for hero sections
+[] setup the privacy policy and terms of service
+[] setup the faq page
+[] Redirect user to its preferred language
+[] activate login, or rather dashboard, button
+[] github actions to create automated releases and tags for main branch
 
 ## Local development
 
@@ -23,6 +31,7 @@
 - [setup preview, development, staging and production environment for deployments](https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment)
 - [Setup branches rules for main and staging](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule)
 - [setup Github action to only allow PRs from staging to main and dev to staging](.github/workflows/enforcer.yaml)
+- add PUBLIC_TURNSTILE_SITE_KEY to Github organization secrets
 
 ### Cloudflare
 
@@ -41,4 +50,5 @@
 ### Cloudflare configuration
 
 - add Resend and Google envs in Cloudfare for the page functions. See .dev.vars.template for all envs
-- add rate limiting for page functions api endpoint
+- add Cloudfare rate limiting for page functions api endpoint
+- add Cloudfare captcha for contact form
