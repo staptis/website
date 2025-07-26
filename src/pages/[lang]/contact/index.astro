@@ -39,11 +39,16 @@ const lang = getLangFromPath(Astro.url.pathname);
         data-sitekey={PUBLIC_TURNSTILE_SITE_KEY}
         data-theme="light"
         data-language={lang}
+        data-callback="onTsOk"
+        data-expired-callback="onTsOff"
+        data-error-callback="onTsOff"
       >
       </div>
 
       <!-- Submit Button -->
-      <Button type="submit">{t(lang, "contact.send_message")}</Button>
+      <Button id="submit" type="submit" disabled
+        >{t(lang, "contact.send_message")}</Button
+      >
     </form>
   </Section>
 </Layout>
@@ -53,3 +58,11 @@ const lang = getLangFromPath(Astro.url.pathname);
   async
   defer
   is:inline></script>
+<script is:inline>
+  function onTsOk() {
+    document.getElementById("submit").disabled = false;
+  }
+  function onTsOff() {
+    document.getElementById("submit").disabled = true;
+  }
+</script>
