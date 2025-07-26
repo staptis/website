@@ -1,22 +1,27 @@
-import { IFormContact, IStorageService } from "@/services/serviceTypes";
-import { Env } from "@/types";
+import { EnvironmentNotSetError, ServiceRequestError } from "@/services/errors";
+import { IProspect, IStorageService, Language } from "@/types";
+import { Env } from "@/services/types";
 
 export class GoogleStorageService implements IStorageService {
+  name = "GoogleStorageService";
   #clientEmail: string;
   #privateKey: string;
   #sheetId: string;
   #sheetName: string;
   constructor(env: Env) {
-    console.log("GoogleStorageService initialized");
+    console.info("initializing " + this.name);
     if (
       !env.GOOGLE_CLIENT_EMAIL ||
       !env.GOOGLE_PRIVATE_KEY_BASE64 ||
       !env.GOOGLE_SHEET_ID ||
       !env.GOOGLE_SHEET_NAME
     ) {
-      throw new Error(
-        "GOOGLE_CLIENT_EMAIL, GOOGLE_PRIVATE_KEY_BASE64, GOOGLE_SHEET_ID, and GOOGLE_SHEET_NAME envs are required",
-      );
+      throw new EnvironmentNotSetError([
+        "GOOGLE_CLIENT_EMAIL",
+        "GOOGLE_PRIVATE_KEY_BASE64",
+        "GOOGLE_SHEET_ID",
+        "GOOGLE_SHEET_NAME",
+      ]);
     }
     this.#clientEmail = env.GOOGLE_CLIENT_EMAIL;
     this.#privateKey = atob(env.GOOGLE_PRIVATE_KEY_BASE64).replace(
@@ -26,19 +31,18 @@ export class GoogleStorageService implements IStorageService {
     this.#sheetId = env.GOOGLE_SHEET_ID;
     this.#sheetName = env.GOOGLE_SHEET_NAME;
   }
-  async storeContact(data: IFormContact): Promise<boolean> {
+  async storeProspect(data: IProspect, language: Language): Promise<void> {
     const { email, name, companyName = "" } = data;
 
     const token = await this.#getAccessToken();
     const emailExists = await this.#emailExists(email, token);
 
     if (emailExists) {
-      console.log(`Email ${email} already exists, skipping append.`);
-      return false;
+      console.warn(`Email ${email} already exists, skipping append.`);
+      return;
     }
 
-    await this.#appendRow([email, name, companyName], token);
-    return true;
+    await this.#appendRow([email, name, companyName, language], token);
   }
   async #getAccessToken(): Promise<string> {
     const jwt = await this.#createJWT(
@@ -53,18 +57,21 @@ export class GoogleStorageService implements IStorageService {
       assertion: jwt,
     });
 
-    const res = await fetch("https://oauth2.googleapis.com/token", {
+    const response = await fetch("https://oauth2.googleapis.com/token", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body,
     });
 
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`Failed to get access token: ${res.status} - ${text}`);
+    if (!response.ok) {
+      const text = await response.text();
+      throw new ServiceRequestError(
+        this.name,
+        `Failed to get access token: ${response.status} - ${text}`,
+      );
     }
 
-    const json = await res.json<{ access_token: string }>();
+    const json = await response.json<{ access_token: string }>();
     return json.access_token;
   }
 
@@ -115,15 +122,18 @@ export class GoogleStorageService implements IStorageService {
     const range = `${this.#sheetName}!A2:A`; // column A, skip header
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.#sheetId}/values/${encodeURIComponent(range)}`;
 
-    const res = await fetch(url, {
+    const response = await fetch(url, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (!res.ok) {
-      throw new Error(`Failed to check email: ${res.status}`);
+    if (!response.ok) {
+      throw new ServiceRequestError(
+        this.name,
+        `Failed to check email: ${response.status}`,
+      );
     }
 
-    const json = await res.json<{ values?: string[][] }>();
+    const json = await response.json<{ values?: string[][] }>();
     const emails = json.values ?? [];
     return emails.some(
       (row) => (row[0] || "").toLowerCase() === email.toLowerCase(),
@@ -135,7 +145,7 @@ export class GoogleStorageService implements IStorageService {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.#sheetId}/values/${encodeURIComponent(range)}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
 
     const body = { values: [row], majorDimension: "ROWS" };
-    const res = await fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -144,9 +154,12 @@ export class GoogleStorageService implements IStorageService {
       body: JSON.stringify(body),
     });
 
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`Failed to append row: ${res.status} - ${text}`);
+    if (!response.ok) {
+      const text = await response.text();
+      throw new ServiceRequestError(
+        this.name,
+        `Failed to append row on Google sheet: ${response.status} - ${text}`,
+      );
     }
   }
 

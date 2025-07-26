@@ -1,11 +1,15 @@
-import { IEmailService, IFormContact } from "@/services/serviceTypes";
+import { IEmailService, IProspect } from "@/types";
 import { Language } from "@/types";
 
 export class LogEmailService implements IEmailService {
+  name = "LogEmailService";
   constructor() {
-    console.log("LogEmailService initialized");
+    console.info("initializing " + this.name);
   }
-  async sendEmail(data: IFormContact, language: Language): Promise<void> {
+  async sendWelcomeEmailProspect(
+    data: IProspect,
+    language: Language,
+  ): Promise<void> {
     console.log("Sending email:", data, language);
   }
 }

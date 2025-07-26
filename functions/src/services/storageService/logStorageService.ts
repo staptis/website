@@ -1,11 +1,11 @@
-import { IFormContact, IStorageService } from "@/services/serviceTypes";
+import { IProspect, IStorageService } from "@/types";
 
 export class LogStorageService implements IStorageService {
+  name = "LogStorageService";
   constructor() {
-    console.log("LogStorageService initialized");
+    console.info("initializing " + this.name);
   }
-  async storeContact(data: IFormContact): Promise<boolean> {
+  async storeProspect(data: IProspect): Promise<void> {
     console.log("Storing form data:", data);
-    return true;
   }
 }

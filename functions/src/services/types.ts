@@ -1,0 +1,11 @@
+export interface Env {
+  EMAIL_SERVICE: "LOG" | "RESEND";
+  STORAGE_SERVICE: "LOG" | "GOOGLE";
+  CAPTCHA_SERVICE: "LOG" | "TURNSTILE";
+  RESEND_API_KEY: string;
+  GOOGLE_CLIENT_EMAIL: string;
+  GOOGLE_PRIVATE_KEY_BASE64: string;
+  GOOGLE_SHEET_ID: string;
+  GOOGLE_SHEET_NAME: string;
+  TURNSTILE_SECRET_KEY: string;
+}
