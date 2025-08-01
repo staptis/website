@@ -2,14 +2,15 @@
 
 ## TODOS
 
-[] migrate to [Cloudflare workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/)
-[] add the screenshots for the steps in home page
-[] add screen recording for hero sections
-[] setup the privacy policy and terms of service
-[] setup the faq page
-[] Redirect user to its preferred language
-[] activate login, or rather dashboard, button
-[] github actions to create automated releases and tags for main branch
+- [] migrate to [Cloudflare workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/)
+- [] add the screenshots for the steps in home page
+- [] add screen recording for hero sections
+- [] setup the privacy policy and terms of service
+- [] setup the faq page
+- [] Redirect user to its preferred language
+- [] activate login, or rather dashboard, button
+- [] github actions to create automated releases and tags for main branch
+- [] github actions integrate with automated LLM PR reviews
 
 ## Local development
 

@@ -1,6 +1,7 @@
-import { EnvironmentNotSetError, ServiceRequestError } from "@/services/errors";
-import { IProspect, IStorageService, Language } from "@/types";
-import { Env } from "@/services/types";
+import { ServiceRequestError } from "utils/errors";
+import { Language } from "types/language";
+import { IProspect } from "types/prospect";
+import { IStorageService, GoogleStorageServiceConfig } from "types/service";
 
 export class GoogleStorageService implements IStorageService {
   name = "GoogleStorageService";
@@ -8,28 +9,14 @@ export class GoogleStorageService implements IStorageService {
   #privateKey: string;
   #sheetId: string;
   #sheetName: string;
-  constructor(env: Env) {
-    console.info("initializing " + this.name);
-    if (
-      !env.GOOGLE_CLIENT_EMAIL ||
-      !env.GOOGLE_PRIVATE_KEY_BASE64 ||
-      !env.GOOGLE_SHEET_ID ||
-      !env.GOOGLE_SHEET_NAME
-    ) {
-      throw new EnvironmentNotSetError([
-        "GOOGLE_CLIENT_EMAIL",
-        "GOOGLE_PRIVATE_KEY_BASE64",
-        "GOOGLE_SHEET_ID",
-        "GOOGLE_SHEET_NAME",
-      ]);
-    }
-    this.#clientEmail = env.GOOGLE_CLIENT_EMAIL;
-    this.#privateKey = atob(env.GOOGLE_PRIVATE_KEY_BASE64).replace(
+  constructor(config: GoogleStorageServiceConfig) {
+    this.#clientEmail = config.GOOGLE_CLIENT_EMAIL;
+    this.#privateKey = atob(config.GOOGLE_PRIVATE_KEY_BASE64).replace(
       /\\n/g,
       "\n",
     );
-    this.#sheetId = env.GOOGLE_SHEET_ID;
-    this.#sheetName = env.GOOGLE_SHEET_NAME;
+    this.#sheetId = config.GOOGLE_SHEET_ID;
+    this.#sheetName = config.GOOGLE_SHEET_NAME;
   }
   async storeProspect(data: IProspect, language: Language): Promise<void> {
     const { email, name, companyName = "" } = data;

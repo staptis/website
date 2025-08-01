@@ -1,17 +1,14 @@
-import type { IEmailService, IProspect, Language } from "@/types";
-import type { Env } from "@/services/types";
-import { EnvironmentNotSetError, ServiceRequestError } from "@/services/errors";
-import { welcomeEmail } from "@/services/emailService/emailTemplates/welcomeEmail/welcomeEmailTemplate";
+import { ServiceRequestError } from "utils/errors";
+import { welcomeEmail } from "services/emailService/emailTemplates/welcomeEmail/welcomeEmailTemplate";
+import { IEmailService, ResendEmailServiceConfig } from "types/service";
+import { IProspect } from "types/prospect";
+import { Language } from "types/language";
 
 export class ResendEmailService implements IEmailService {
   name = "ResendEmailService";
   #apiKey: string;
-  constructor(env: Env) {
-    console.info("initializing " + this.name);
-    if (!env.RESEND_API_KEY) {
-      throw new EnvironmentNotSetError("RESEND_API_KEY");
-    }
-    this.#apiKey = env.RESEND_API_KEY;
+  constructor(config: ResendEmailServiceConfig) {
+    this.#apiKey = config.RESEND_API_KEY;
   }
   async sendWelcomeEmailProspect(
     data: IProspect,

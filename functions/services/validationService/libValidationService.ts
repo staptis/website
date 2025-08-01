@@ -1,10 +1,11 @@
-import { Language, IProspect } from "@/types";
-import { ValidationError } from "@/packages/errors";
-import { translations } from "@/translations";
+import { IProspect } from "types/prospect";
+import { IValidationService } from "types/service";
+import { Language } from "types/language";
+import { ValidationError } from "utils/errors";
+import { translations } from "utils/translations";
 
-//translate error messages to the correct language
-export class Prospect {
-  static validate(prospect: IProspect, language: Language): boolean {
+export class LibValidationService implements IValidationService {
+  validateProspectData(prospect: IProspect, language: Language): boolean {
     if (!prospect.name) {
       throw new ValidationError(
         "name",

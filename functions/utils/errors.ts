@@ -1,10 +1,29 @@
-export class EnvironmentNotSetError extends Error {
+export class ValidationError extends Error {
+  field: string;
+  constructor(message: string, field: string) {
+    super(message);
+    this.name = "ValidationError";
+    this.field = field;
+  }
+}
+
+export class ConfigNotSetError extends Error {
   constructor(envName: string | string[]) {
     super(
-      "Environment variable(s) not set: " +
+      "Config  not set: " +
         (Array.isArray(envName) ? envName.join(", ") : envName),
     );
-    this.name = "EnvironmentNotSetError";
+    this.name = "ConfigNotSetError";
+  }
+}
+
+export class ConfigValueError extends Error {
+  constructor(envName: string | string[]) {
+    super(
+      "Incorrect config(s): " +
+        (Array.isArray(envName) ? envName.join(", ") : envName),
+    );
+    this.name = "ConfigValueError";
   }
 }
 

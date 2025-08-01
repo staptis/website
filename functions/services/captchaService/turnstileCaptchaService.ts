@@ -1,16 +1,11 @@
-import { ICaptchaService } from "@/types";
-import { Env } from "@/services/types";
-import { EnvironmentNotSetError, ServiceRequestError } from "@/services/errors";
+import { ICaptchaService, TurnstileCaptchaServiceConfig } from "types/service";
+import { ServiceRequestError } from "utils/errors";
 
 export class TurnstileCaptchaService implements ICaptchaService {
   name = "TurnstileCaptchaService";
   #secretKey: string;
-  constructor(env: Env) {
-    console.info("initializing " + this.name);
-    if (!env.TURNSTILE_SECRET_KEY) {
-      throw new EnvironmentNotSetError("TURNSTILE_SECRET_KEY");
-    }
-    this.#secretKey = env.TURNSTILE_SECRET_KEY;
+  constructor(config: TurnstileCaptchaServiceConfig) {
+    this.#secretKey = config.TURNSTILE_SECRET_KEY;
   }
   async verifyCaptchaToken(captchaToken: string): Promise<boolean> {
     const response = await fetch(

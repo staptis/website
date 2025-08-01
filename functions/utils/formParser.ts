@@ -1,4 +1,4 @@
-import { IProspect } from "@/types";
+import { IProspect } from "types/prospect";
 
 export class FormParser {
   static parseProspect(formData: FormData): IProspect {

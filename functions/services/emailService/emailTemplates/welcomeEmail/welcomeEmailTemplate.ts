@@ -1,6 +1,6 @@
-import { Language } from "@/types";
-import welcomeEmailHtml from "@/services/emailService/emailTemplates/welcomeEmail/welcomeEmailHtml";
-import { translations } from "@/translations";
+import { Language } from "types/language";
+import welcomeEmailHtml from "services/emailService/emailTemplates/welcomeEmail/welcomeEmailHtml";
+import { translations } from "utils/translations";
 
 interface IWelcomeEmailTemplates {
   language: Language;
