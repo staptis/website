@@ -65,4 +65,15 @@ const lang = getLangFromPath(Astro.url.pathname);
   function onTsOff() {
     document.getElementById("submit").disabled = true;
   }
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const submitBtn = document.getElementById("submit");
+
+    form?.addEventListener("submit", () => {
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerText = t(lang, "contact.sending_message");
+      }
+    });
+  });
 </script>

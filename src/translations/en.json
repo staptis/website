@@ -21,6 +21,7 @@
     "email": "Email",
     "company_name": "Company Name",
     "send_message": "Send Us Your Message",
+    "sending_message": "Sending your message...",
     "message_sent": "Your message has been sent successfully!",
     "error_sending_message": "There was an error sending your message. Please try again."
   },

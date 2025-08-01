@@ -23,6 +23,7 @@ export const TranslationSchema = z.object({
     email: z.string(),
     company_name: z.string(),
     send_message: z.string(),
+    sending_message: z.string(),
     message_sent: z.string(),
     error_sending_message: z.string(),
   }),

@@ -21,6 +21,7 @@
     "email": "E-mail",
     "company_name": "Bedrijfsnaam",
     "send_message": "Stuur uw bericht",
+    "sending_message": "Uw bericht wordt verzonden...",
     "message_sent": "Uw bericht is succesvol verzonden!",
     "error_sending_message": "Er is een fout opgetreden bij het verzenden van uw bericht. Probeer het alstublieft opnieuw."
   },
